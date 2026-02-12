@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EvoluSer - Seguros & Comercial</title>
-    <!-- Metadatos para SEO y Móviles -->
-    <meta name="description" content="Protección integral en todos los ramos de seguros con el respaldo de EvoluSer. Liderado por Dolores y Christian Ortega Rogel.">
-    <meta name="theme-color" content="#005691">
+    <meta name="description" content="Protección integral en todos los ramos de seguros con el respaldo de EvoluSer.">
     
-    <!-- Librerías Externas -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
-
+    
     <script>
         tailwind.config = {
             theme: {
@@ -24,7 +20,6 @@
                         brandGold: '#D4AF37',
                         brandGoldLight: '#F9E076',
                         brandDark: '#0f172a',
-                        brandRed: '#b91c1c',
                     },
                     fontFamily: {
                         heading: ['Montserrat', 'sans-serif'],
@@ -33,15 +28,6 @@
                     animation: {
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'float': 'float 6s ease-in-out infinite',
-                        'shimmer-infinite': 'shimmerInfinite 4s cubic-bezier(0.4, 0, 0.2, 1) infinite',
-                    },
-                    keyframes: {
-                        shimmerInfinite: {
-                            '0%': { transform: 'translateX(-150%) skewX(-25deg)' },
-                            '20%': { transform: 'translateX(150%) skewX(-25deg)' },
-                            '100%': { transform: 'translateX(150%) skewX(-25deg)' }
-                        },
-                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-15px)' } },
                     }
                 }
             }
@@ -49,6 +35,7 @@
     </script>
 
     <style>
+        /* ESTILOS PERSONALIZADOS */
         body { font-family: 'Open Sans', sans-serif; background-color: #f8fafc; overflow-x: hidden; }
         
         .cinematic-bg { 
@@ -57,282 +44,243 @@
         }
         
         .glass-card { 
-            background: rgba(255, 255, 255, 0.9); 
+            background: rgba(255, 255, 255, 0.95); 
             backdrop-filter: blur(15px); 
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 25px 50px -12px rgba(0, 86, 145, 0.15);
-        }
-
-        .neon-letter { 
-            display: inline-block; animation: elegant-spin 8s infinite; 
-            text-shadow: 0 2px 10px rgba(0, 86, 145, 0.3);
-        }
-        @keyframes elegant-spin { 
-            0%, 85% { transform: rotateY(0deg); color: #005691; } 
-            92% { color: #D4AF37; text-shadow: 0 0 20px rgba(212, 175, 55, 0.5); } 
-            100% { transform: rotateY(360deg); } 
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 40px -10px rgba(0, 50, 100, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .metal-icon {
             background-clip: text; -webkit-background-clip: text; color: transparent;
-            background-image: linear-gradient(120deg, #003056 0%, #005691 50%, #003056 100%);
+            background-image: linear-gradient(120deg, #003056 0%, #005691 50%, #D4AF37 100%);
             background-size: 200% auto; transition: 0.5s;
         }
         .group:hover .metal-icon { background-position: right center; transform: scale(1.1); }
+        
+        .nav-active { color: #005691; border-bottom: 2px solid #D4AF37; }
+        
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     </style>
 </head>
 <body class="text-slate-800 antialiased min-h-screen flex flex-col">
+
     <div class="cinematic-bg"></div>
 
-    <!-- NAVEGACIÓN SUPERIOR -->
-    <nav class="fixed top-0 w-full z-[100] px-6 py-4 flex justify-between items-center bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div class="flex items-center gap-2">
-            <div class="w-10 h-10 bg-brandBlue rounded-lg flex items-center justify-center text-white font-bold shadow-lg">E</div>
-            <span class="font-heading font-bold text-brandBlue tracking-tighter text-xl">EvoluSer <span class="text-brandGold">Seguros</span></span>
+    <nav class="fixed top-0 w-full z-[100] px-6 py-4 flex justify-between items-center bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-brandBlue to-brandDark rounded-lg flex items-center justify-center text-white font-bold shadow-lg text-sm">EV</div>
+            <div class="flex flex-col">
+                <span class="font-heading font-black text-brandBlue tracking-tighter text-lg leading-none">EvoluSer</span>
+                <span class="font-heading font-bold text-brandGold text-[10px] tracking-widest uppercase leading-none">Seguros & Comercial</span>
+            </div>
         </div>
+        
         <div class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest">
-            <a href="#" onclick="switchTab('propuesta')" class="hover:text-brandGold transition-colors">Propuesta</a>
-            <a href="#" onclick="switchTab('ramos')" class="hover:text-brandGold transition-colors">Ramos</a>
-            <a href="#" onclick="switchTab('directores')" class="hover:text-brandGold transition-colors">Asesoría Directa</a>
+            <button onclick="switchTab('propuesta')" class="hover:text-brandBlue transition-colors focus:outline-none">Propuesta</button>
+            <button onclick="switchTab('ramos')" class="hover:text-brandBlue transition-colors focus:outline-none">Ramos</button>
+            <button onclick="switchTab('directores')" class="hover:text-brandBlue transition-colors focus:outline-none">Directorio</button>
         </div>
-        <a href="https://wa.me/593983900050" target="_blank" class="bg-brandBlue text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-brandGold transition-all shadow-md">Cotizar Ahora</a>
+
+        <a href="https://wa.me/593983900050" target="_blank" class="bg-brandBlue text-white px-5 py-2.5 rounded-full text-xs font-bold hover:bg-brandGold transition-all shadow-md transform hover:scale-105 flex items-center gap-2">
+            <i class="fab fa-whatsapp"></i> Cotizar
+        </a>
     </nav>
 
-    <!-- HEADER / HERO -->
-    <header class="pt-32 pb-20 relative overflow-hidden">
-        <div class="container mx-auto px-6 text-center">
-            <div class="inline-block glass-card p-6 rounded-3xl mb-8 relative group" data-tilt>
-                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-brandGold/20 to-transparent w-full h-full -translate-x-full animate-shimmer-infinite"></div>
-                <img src="logo.png" alt="EvoluSer Logo" class="h-32 mx-auto drop-shadow-xl" onerror="this.src='https://ui-avatars.com/api/?name=EvoluSer+Seguros&background=005691&color=fff&size=128'">
-            </div>
-            <h1 class="text-4xl md:text-6xl font-black text-brandBlue mb-4 tracking-tight">Comercial & Seguros</h1>
-            <p id="slogan-container" class="text-xl md:text-2xl font-light tracking-[0.3em] text-slate-500 uppercase"></p>
+    <header class="pt-32 pb-16 relative overflow-hidden text-center px-4">
+        <div class="inline-block glass-card p-6 rounded-full mb-8 relative animate-float">
+            <img src="https://ui-avatars.com/api/?name=EvoluSer+Seguros&background=005691&color=fff&size=128&font-size=0.3" alt="Logo" class="w-24 h-24 rounded-full shadow-lg">
         </div>
+        <h1 class="text-3xl md:text-5xl font-black text-brandBlue mb-4 tracking-tight">PROTECCIÓN PATRIMONIAL</h1>
+        <p class="text-lg md:text-xl font-light tracking-[0.2em] text-brandGold uppercase">Respaldo | Confianza | Solidez</p>
     </header>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="container mx-auto px-4 pb-20 flex-grow">
+    <main class="container mx-auto px-4 pb-20 flex-grow max-w-6xl">
         
-        <!-- TABS DE NAVEGACIÓN INTERNA -->
         <div class="flex justify-center mb-12">
-            <div class="glass-card p-1.5 rounded-full flex gap-2">
-                <button onclick="switchTab('propuesta')" id="btn-propuesta" class="px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all bg-brandBlue text-white shadow-lg">Nuestra Visión</button>
-                <button onclick="switchTab('ramos')" id="btn-ramos" class="px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all text-slate-400 hover:text-brandBlue">Ramos de Seguros</button>
+            <div class="bg-white p-1.5 rounded-full shadow-lg border border-slate-100 inline-flex">
+                <button onclick="switchTab('propuesta')" id="btn-propuesta" class="px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all bg-brandBlue text-white shadow-md">Visión</button>
+                <button onclick="switchTab('ramos')" id="btn-ramos" class="px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all text-slate-500 hover:text-brandBlue">Seguros</button>
             </div>
         </div>
 
-        <div id="main-content" class="max-w-6xl mx-auto">
-            
-            <!-- SECCIÓN 1: PROPUESTA COMERCIAL -->
-            <section id="view-propuesta" class="space-y-12 animate-fade-in">
-                <div class="glass-card rounded-[3rem] p-10 md:p-16 relative overflow-hidden">
-                    <div class="grid md:grid-cols-2 gap-12 items-center">
-                        <div class="space-y-6">
-                            <span class="text-brandGold font-bold text-sm tracking-[0.4em] uppercase">Respaldo Total</span>
-                            <h2 class="text-4xl font-heading font-black text-brandBlue leading-tight">Protegemos tu evolución patrimonial y humana.</h2>
-                            <p class="text-slate-600 leading-relaxed text-lg">
-                                En el ámbito comercial y de seguros, entendemos que no solo vendemos pólizas; entregamos <strong>tranquilidad</strong>. Bajo el liderazgo de <strong>Dolores y Christian Ortega Rogel</strong>, nuestra división comercial se especializa en analizar los riesgos de tu negocio y familia para ofrecer coberturas que realmente respondan en el momento de la verdad.
-                            </p>
-                            <div class="flex gap-4 pt-4 text-brandBlue">
-                                <div class="flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-slate-100 flex-1">
-                                    <i class="fas fa-handshake text-3xl mb-2 text-brandGold"></i>
-                                    <span class="text-[10px] font-bold uppercase">Lealtad</span>
-                                </div>
-                                <div class="flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-slate-100 flex-1">
-                                    <i class="fas fa-shield-heart text-3xl mb-2 text-brandGold"></i>
-                                    <span class="text-[10px] font-bold uppercase">Protección</span>
-                                </div>
-                                <div class="flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-slate-100 flex-1">
-                                    <i class="fas fa-chart-line text-3xl mb-2 text-brandGold"></i>
-                                    <span class="text-[10px] font-bold uppercase">Respaldo</span>
-                                </div>
+        <div id="view-propuesta" class="animate-fade-in block">
+            <div class="glass-card rounded-3xl p-8 md:p-12 border-t-4 border-brandGold">
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div class="space-y-6">
+                        <span class="bg-brandBlue/10 text-brandBlue px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Nuestra Promesa</span>
+                        <h2 class="text-3xl md:text-4xl font-heading font-black text-slate-800 leading-tight">No vendemos pólizas, entregamos <span class="text-brandBlue">Tranquilidad.</span></h2>
+                        <p class="text-slate-600 leading-relaxed text-sm md:text-base text-justify">
+                            Bajo el liderazgo de <strong>Dolores y Christian Ortega Rogel</strong>, EvoluSer Comercial fusiona la ingeniería de riesgos con el sentido humano. Entendemos que detrás de cada auto, casa o empresa, hay años de esfuerzo. Nuestro compromiso es blindar ese esfuerzo con las mejores aseguradoras del país.
+                        </p>
+                        
+                        <div class="grid grid-cols-3 gap-4 pt-4">
+                            <div class="text-center p-3 bg-slate-50 rounded-xl">
+                                <i class="fas fa-hand-holding-heart text-2xl text-brandGold mb-2"></i>
+                                <p class="text-[10px] font-bold uppercase text-slate-600">Humano</p>
+                            </div>
+                            <div class="text-center p-3 bg-slate-50 rounded-xl">
+                                <i class="fas fa-briefcase text-2xl text-brandBlue mb-2"></i>
+                                <p class="text-[10px] font-bold uppercase text-slate-600">Experto</p>
+                            </div>
+                            <div class="text-center p-3 bg-slate-50 rounded-xl">
+                                <i class="fas fa-award text-2xl text-brandGold mb-2"></i>
+                                <p class="text-[10px] font-bold uppercase text-slate-600">Garantía</p>
                             </div>
                         </div>
-                        <div class="relative">
-                            <div class="absolute -inset-4 bg-brandGold/10 rounded-full blur-3xl animate-pulse-slow"></div>
-                            <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?auto=format&fit=crop&w=800&q=80" alt="Protección" class="rounded-[2rem] shadow-2xl relative z-10 border-8 border-white">
-                        </div>
+                    </div>
+                    <div class="rounded-2xl overflow-hidden shadow-2xl relative h-64 md:h-full">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop" alt="Consultoría" class="absolute inset-0 w-full h-full object-cover transform hover:scale-110 transition duration-700">
                     </div>
                 </div>
-            </section>
-
-            <!-- SECCIÓN 2: RAMOS DE SEGUROS -->
-            <section id="view-ramos" class="hidden space-y-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-heading font-black text-brandBlue uppercase tracking-tighter">Cobertura en Todos los Ramos</h2>
-                    <p class="text-slate-500">Haz clic en el área de tu interés para recibir asesoría personalizada.</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Ramo Personas -->
-                    <div class="group glass-card p-8 rounded-3xl hover:-translate-y-2 transition-all cursor-pointer border-b-4 border-brandBlue" onclick="window.open('https://wa.me/593983900050?text=Hola,%20busco%20seguros%20personales%20(Vida/Salud)')">
-                        <i class="fas fa-user-check text-5xl metal-icon mb-6 block"></i>
-                        <h3 class="text-xl font-bold mb-3">Seguros de Personas</h3>
-                        <ul class="text-sm text-slate-500 space-y-2">
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Vida y Ahorro</li>
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Asistencia Médica</li>
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Accidentes Personales</li>
-                        </ul>
-                    </div>
-                    <!-- Ramo Vehículos -->
-                    <div class="group glass-card p-8 rounded-3xl hover:-translate-y-2 transition-all cursor-pointer border-b-4 border-brandGold" onclick="window.open('https://wa.me/593983900050?text=Hola,%20busco%20seguro%20para%20Vehiculos')">
-                        <i class="fas fa-car-shield text-5xl metal-icon mb-6 block"></i>
-                        <h3 class="text-xl font-bold mb-3">Movilidad Segura</h3>
-                        <ul class="text-sm text-slate-500 space-y-2">
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Vehículos Livianos</li>
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Flotas de Pesados</li>
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Responsabilidad Civil</li>
-                        </ul>
-                    </div>
-                    <!-- Ramo Patrimonial -->
-                    <div class="group glass-card p-8 rounded-3xl hover:-translate-y-2 transition-all cursor-pointer border-b-4 border-slate-800" onclick="window.open('https://wa.me/593983900050?text=Hola,%20busco%20seguros%20para%20mi%20Empresa/Hogar')">
-                        <i class="fas fa-house-lock text-5xl metal-icon mb-6 block"></i>
-                        <h3 class="text-xl font-bold mb-3">Patrimonio & Empresa</h3>
-                        <ul class="text-sm text-slate-500 space-y-2">
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Multiriesgo Hogar</li>
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Incendio y Robo</li>
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Equipo Electrónico</li>
-                        </ul>
-                    </div>
-                    <!-- Ramo Técnico -->
-                    <div class="group glass-card p-8 rounded-3xl hover:-translate-y-2 transition-all cursor-pointer border-b-4 border-brandBlue" onclick="window.open('https://wa.me/593983900050?text=Hola,%20busco%20seguros%20Tecnicos/Fianzas')">
-                        <i class="fas fa-file-contract text-5xl metal-icon mb-6 block"></i>
-                        <h3 class="text-xl font-bold mb-3">Ramos Técnicos & Fianzas</h3>
-                        <ul class="text-sm text-slate-500 space-y-2">
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Fianzas y Garantías</li>
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Transporte de Carga</li>
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Todo Riesgo Construcción</li>
-                        </ul>
-                    </div>
-                    <!-- Ramo Agro -->
-                    <div class="group glass-card p-8 rounded-3xl hover:-translate-y-2 transition-all cursor-pointer border-b-4 border-brandGold" onclick="window.open('https://wa.me/593983900050?text=Hola,%20busco%20Seguro%20Agropecuario')">
-                        <i class="fas fa-wheat-awn-circle-exclamation text-5xl metal-icon mb-6 block"></i>
-                        <h3 class="text-xl font-bold mb-3">Seguro Agropecuario</h3>
-                        <ul class="text-sm text-slate-500 space-y-2">
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Cultivos Industriales</li>
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Ganado y Maquinaria</li>
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Invernaderos</li>
-                        </ul>
-                    </div>
-                    <!-- Ramo Especial -->
-                    <div class="group glass-card p-8 rounded-3xl hover:-translate-y-2 transition-all cursor-pointer border-b-4 border-slate-800" onclick="window.open('https://wa.me/593983900050?text=Hola,%20necesito%20una%20Asesoria%20Comercial%20Especializada')">
-                        <i class="fas fa-briefcase text-5xl metal-icon mb-6 block"></i>
-                        <h3 class="text-xl font-bold mb-3">Consultoría Comercial</h3>
-                        <ul class="text-sm text-slate-500 space-y-2">
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Gestión de Carteras</li>
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Auditoría de Seguros</li>
-                            <li><i class="fas fa-check text-brandGold mr-2"></i> Capacitación en Ventas</li>
-                        </ul>
+            </div>
+            
+            <div class="mt-16 grid md:grid-cols-2 gap-6" id="directores-section">
+                <div class="glass-card p-6 rounded-2xl flex items-center gap-4 hover:shadow-xl transition-all border border-brandGold/20">
+                    <img src="https://ui-avatars.com/api/?name=Dolores+Ortega&background=D4AF37&color=fff&size=128" alt="DO" class="w-16 h-16 rounded-full shadow-md">
+                    <div>
+                        <h3 class="font-bold text-brandBlue text-sm">Dolores Eugenia Ortega Rogel</h3>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Directora Comercial & Seguros</p>
                     </div>
                 </div>
-            </section>
+                <div class="glass-card p-6 rounded-2xl flex items-center gap-4 hover:shadow-xl transition-all border border-brandBlue/20">
+                    <img src="https://ui-avatars.com/api/?name=Christian+Ortega&background=005691&color=fff&size=128" alt="CO" class="w-16 h-16 rounded-full shadow-md">
+                    <div>
+                        <h3 class="font-bold text-brandBlue text-sm">Christian Roberth Ortega Rogel</h3>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Director Técnico & Riesgos</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- SECCIÓN DIRECTORES (AUTORIDAD) -->
-        <section id="view-directores" class="mt-20">
-            <div class="text-center mb-12">
-                <span class="text-brandBlue font-bold text-xs uppercase tracking-[0.3em]">Liderazgo con Experiencia</span>
-                <h2 class="text-4xl font-heading font-black text-brandBlue mt-2">Nuestra Dirección Comercial</h2>
+        <div id="view-ramos" class="hidden animate-fade-in">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold text-slate-700">Nuestros Ramos</h2>
+                <p class="text-xs text-slate-500 uppercase tracking-widest">Cobertura 360 Grados</p>
             </div>
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Directora 1 -->
-                <div class="glass-card p-8 rounded-[2.5rem] text-center group" data-tilt>
-                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-brandGold shadow-lg">
-                        <img src="director1.png" alt="Dolores Eugenia Ortega Rogel" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Dolores+Ortega&background=005691&color=fff&size=128'">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-lg border-b-4 border-brandBlue hover:-translate-y-1 transition-transform cursor-pointer group" onclick="contactar('Salud y Vida')">
+                    <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-brandBlue transition-colors">
+                        <i class="fas fa-heartbeat text-brandBlue group-hover:text-white text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-brandBlue">Dolores Eugenia Ortega Rogel</h3>
-                    <p class="text-brandGold font-bold text-xs uppercase mb-4 tracking-widest">Directora Comercial & Seguros</p>
-                    <p class="text-sm text-slate-500 italic">"Garantizar que cada familia y empresa en nuestra comunidad tenga el respaldo necesario para enfrentar cualquier imprevisto."</p>
+                    <h3 class="font-bold text-lg mb-2 text-slate-800">Vida y Salud</h3>
+                    <p class="text-xs text-slate-500 mb-4">Protección médica, vida individual y corporativa.</p>
+                    <span class="text-brandBlue text-xs font-bold uppercase flex items-center gap-2">Cotizar <i class="fas fa-arrow-right"></i></span>
                 </div>
-                <!-- Director 2 -->
-                <div class="glass-card p-8 rounded-[2.5rem] text-center group" data-tilt>
-                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-brandBlue shadow-lg">
-                        <img src="director2.png" alt="Christian Roberth Ortega Rogel" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Christian+Ortega&background=005691&color=fff&size=128'">
+
+                <div class="bg-white p-6 rounded-2xl shadow-lg border-b-4 border-brandGold hover:-translate-y-1 transition-transform cursor-pointer group" onclick="contactar('Vehículos')">
+                    <div class="w-12 h-12 bg-yellow-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-brandGold transition-colors">
+                        <i class="fas fa-car text-brandGold group-hover:text-white text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-brandBlue">Christian Roberth Ortega Rogel</h3>
-                    <p class="text-brandGold font-bold text-xs uppercase mb-4 tracking-widest">Director Técnico & Riesgos</p>
-                    <p class="text-sm text-slate-500 italic">"La ingeniería del riesgo nos permite diseñar coberturas precisas. Protegemos lo que construyes con análisis y compromiso."</p>
+                    <h3 class="font-bold text-lg mb-2 text-slate-800">Vehículos</h3>
+                    <p class="text-xs text-slate-500 mb-4">Autos livianos, pesados y flotas corporativas.</p>
+                    <span class="text-brandGold text-xs font-bold uppercase flex items-center gap-2">Cotizar <i class="fas fa-arrow-right"></i></span>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-lg border-b-4 border-slate-800 hover:-translate-y-1 transition-transform cursor-pointer group" onclick="contactar('Empresas')">
+                    <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-slate-800 transition-colors">
+                        <i class="fas fa-building text-slate-800 group-hover:text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-800">Empresarial</h3>
+                    <p class="text-xs text-slate-500 mb-4">Incendio, robo, lucro cesante y multiriesgo.</p>
+                    <span class="text-slate-800 text-xs font-bold uppercase flex items-center gap-2">Cotizar <i class="fas fa-arrow-right"></i></span>
+                </div>
+
+                 <div class="bg-white p-6 rounded-2xl shadow-lg border-b-4 border-brandBlue hover:-translate-y-1 transition-transform cursor-pointer group" onclick="contactar('Ramos Técnicos')">
+                    <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-brandBlue transition-colors">
+                        <i class="fas fa-hard-hat text-brandBlue group-hover:text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-800">Ramos Técnicos</h3>
+                    <p class="text-xs text-slate-500 mb-4">Equipo electrónico, maquinaria y construcción.</p>
+                    <span class="text-brandBlue text-xs font-bold uppercase flex items-center gap-2">Cotizar <i class="fas fa-arrow-right"></i></span>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-lg border-b-4 border-brandGold hover:-translate-y-1 transition-transform cursor-pointer group" onclick="contactar('Agro')">
+                    <div class="w-12 h-12 bg-yellow-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-brandGold transition-colors">
+                        <i class="fas fa-tractor text-brandGold group-hover:text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-800">Agropecuario</h3>
+                    <p class="text-xs text-slate-500 mb-4">Seguro de cultivos, plantaciones y ganadero.</p>
+                    <span class="text-brandGold text-xs font-bold uppercase flex items-center gap-2">Cotizar <i class="fas fa-arrow-right"></i></span>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-lg border-b-4 border-slate-800 hover:-translate-y-1 transition-transform cursor-pointer group" onclick="contactar('Fianzas')">
+                    <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-slate-800 transition-colors">
+                        <i class="fas fa-file-signature text-slate-800 group-hover:text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-800">Fianzas</h3>
+                    <p class="text-xs text-slate-500 mb-4">Cumplimiento de contrato y buen uso de anticipo.</p>
+                    <span class="text-slate-800 text-xs font-bold uppercase flex items-center gap-2">Cotizar <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
-        </section>
+        </div>
+
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-brandDark text-white py-16">
-        <div class="container mx-auto px-6 grid md:grid-cols-3 gap-12 text-center md:text-left">
+    <footer class="bg-brandDark text-white py-12 border-t border-brandBlue/30">
+        <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8 text-center md:text-left">
             <div>
-                <h4 class="font-heading font-black text-2xl mb-6">EvoluSer <span class="text-brandGold">Seguros</span></h4>
-                <p class="text-slate-400 text-sm leading-relaxed">División especializada en la comercialización y asesoría de seguros en todos los ramos. Parte del ecosistema EvoluSer Ecuador.</p>
+                <h4 class="font-bold text-lg mb-4">EvoluSer <span class="text-brandGold">Seguros</span></h4>
+                <p class="text-slate-400 text-xs leading-relaxed">Protegemos tu presente para garantizar tu futuro. Una división del Grupo EvoluSer Ecuador.</p>
             </div>
             <div>
-                <h5 class="font-bold text-xs uppercase tracking-[0.3em] text-brandGold mb-6">Contacto Directo</h5>
-                <ul class="space-y-4 text-sm">
-                    <li><i class="fab fa-whatsapp text-brandGold mr-2"></i> +593 98 390 0050</li>
-                    <li><i class="fas fa-envelope text-brandGold mr-2"></i> evoluserec@gmail.com</li>
-                    <li><i class="fas fa-location-dot text-brandGold mr-2"></i> Quito, Ecuador</li>
+                <h5 class="font-bold text-xs uppercase tracking-widest text-brandBlueLight mb-4">Contacto</h5>
+                <ul class="space-y-3 text-sm text-slate-300">
+                    <li><i class="fab fa-whatsapp w-6 text-brandGold"></i> +593 98 390 0050</li>
+                    <li><i class="fas fa-phone w-6 text-brandGold"></i> +593 99 640 8009</li>
+                    <li><i class="fas fa-envelope w-6 text-brandGold"></i> evoluserec@gmail.com</li>
                 </ul>
             </div>
             <div>
-                <h5 class="font-bold text-xs uppercase tracking-[0.3em] text-brandGold mb-6">Redes Sociales</h5>
+                <h5 class="font-bold text-xs uppercase tracking-widest text-brandBlueLight mb-4">Síguenos</h5>
                 <div class="flex justify-center md:justify-start gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brandGold transition-all"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brandGold transition-all"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brandGold transition-all"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-brandGold transition-colors"><i class="fab fa-facebook-f text-sm"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-brandGold transition-colors"><i class="fab fa-instagram text-sm"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-brandGold transition-colors"><i class="fab fa-linkedin-in text-sm"></i></a>
                 </div>
-                <p class="mt-6 text-[10px] text-slate-500 uppercase tracking-widest">Liderado por Dolores y Christian Ortega Rogel</p>
             </div>
         </div>
-        <div class="border-t border-white/5 mt-12 pt-8 text-center text-[10px] text-slate-500">
-            © 2024 EVOLUSER COMERCIAL & SEGUROS. TODOS LOS DERECHOS RESERVADOS.
+        <div class="text-center mt-10 pt-6 border-t border-white/10 text-[10px] text-slate-500 uppercase tracking-widest">
+            © 2024 EvoluSer. Todos los derechos reservados.
         </div>
     </footer>
 
     <script>
-        // Slogan Dinámico con animación Neon
-        function createSlogan(text) {
-            const container = document.getElementById('slogan-container');
-            text.split('').forEach((char, i) => {
-                const span = document.createElement('span');
-                span.innerText = char === ' ' ? '\u00A0' : char;
-                span.className = 'neon-letter';
-                span.style.animationDelay = `${i * 0.1}s`;
-                container.appendChild(span);
-            });
+        function switchTab(tabName) {
+            const propView = document.getElementById('view-propuesta');
+            const ramosView = document.getElementById('view-ramos');
+            const btnProp = document.getElementById('btn-propuesta');
+            const btnRamos = document.getElementById('btn-ramos');
+
+            if(tabName === 'propuesta') {
+                propView.classList.remove('hidden');
+                ramosView.classList.add('hidden');
+                
+                // Estilos Botones
+                btnProp.className = "px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all bg-brandBlue text-white shadow-md";
+                btnRamos.className = "px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all text-slate-500 hover:text-brandBlue";
+            } else if (tabName === 'ramos') {
+                propView.classList.add('hidden');
+                ramosView.classList.remove('hidden');
+                
+                // Estilos Botones
+                btnRamos.className = "px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all bg-brandBlue text-white shadow-md";
+                btnProp.className = "px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all text-slate-500 hover:text-brandBlue";
+            } else if (tabName === 'directores') {
+                // Scroll a directores en propuesta
+                switchTab('propuesta');
+                setTimeout(() => {
+                    document.getElementById('directores-section').scrollIntoView({behavior: 'smooth'});
+                }, 100);
+            }
         }
 
-        // Navegación de Tabs
-        function switchTab(tab) {
-            const btnP = document.getElementById('btn-propuesta');
-            const btnR = document.getElementById('btn-ramos');
-            const viewP = document.getElementById('view-propuesta');
-            const viewR = document.getElementById('view-ramos');
-
-            if (tab === 'propuesta') {
-                viewP.classList.remove('hidden');
-                viewR.classList.add('hidden');
-                btnP.className = "px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all bg-brandBlue text-white shadow-lg";
-                btnR.className = "px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all text-slate-400 hover:text-brandBlue";
-            } else {
-                viewR.classList.remove('hidden');
-                viewP.classList.add('hidden');
-                btnR.className = "px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all bg-brandBlue text-white shadow-lg";
-                btnP.className = "px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all text-slate-400 hover:text-brandBlue";
-            }
-            window.scrollTo({ top: 400, behavior: 'smooth' });
+        function contactar(ramo) {
+            const numero = "593983900050";
+            const mensaje = `Hola EvoluSer, estoy interesado en cotizar un seguro de: ${ramo}.`;
+            window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            createSlogan("Protegemos tu patrimonio, aseguramos tu futuro");
-            if (typeof VanillaTilt !== 'undefined') {
-                VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
-                    max: 10,
-                    speed: 400,
-                    glare: true,
-                    "max-glare": 0.3
-                });
-            }
-        });
     </script>
 </body>
 </html>
-

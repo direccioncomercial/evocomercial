@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EvoluSer - Gestión de Riesgos y Estrategia</title>
-    <meta name="description" content="Gestión integral de seguros y consultoría comercial en Ecuador.">
+    <meta name="description" content="Gestión integral de seguros, consultoría y marketing audiovisual en Ecuador.">
     <meta name="theme-color" content="#002845">
     
     <!-- LIBRERÍAS EXTERNAS -->
@@ -50,6 +50,24 @@
             background-color: #f8fafc;
         }
 
+        /* --- EFECTO DE LUZ SOBRE CRISTAL (GLASS SHIMMER) --- */
+        @keyframes shimmerGlass {
+            0% { transform: translateX(-150%) skewX(-20deg); opacity: 0; }
+            5% { opacity: 1; }
+            20% { transform: translateX(250%) skewX(-20deg); opacity: 0; }
+            100% { transform: translateX(250%) skewX(-20deg); opacity: 0; }
+        }
+        .glass-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-shine::after {
+            content: ''; position: absolute; top: 0; left: -20%; width: 40%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+            animation: shimmerGlass 8s infinite;
+            z-index: 20; pointer-events: none;
+        }
+
         /* --- NAVBAR TRANSPARENCIA 65% --- */
         .glass-navbar {
             background: rgba(255, 255, 255, 0.65); 
@@ -82,7 +100,7 @@
             position: absolute; top: 50%; transform: translateY(-50%); z-index: 30;
             background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px);
             color: white; border: 1px solid rgba(255, 255, 255, 0.3);
-            width: 48px; height: 48px; border-radius: 50%;
+            width: 44px; height: 44px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             cursor: pointer; transition: all 0.3s ease;
         }
@@ -100,7 +118,7 @@
         /* --- BARRA DE ACCESOS --- */
         .quick-access-wrapper {
             position: relative; z-index: 40; 
-            padding: 2rem 1rem;
+            padding: 2.5rem 1rem;
             background-color: #f8fafc;
         }
         .quick-access-bar {
@@ -109,16 +127,18 @@
             border-radius: 12px; 
             box-shadow: 0 10px 40px rgba(0, 40, 69, 0.05);
             display: flex; justify-content: space-around; align-items: center;
-            padding: 0.8rem 2rem; 
-            max-width: 850px;
+            padding: 0.8rem 1.5rem; 
+            max-width: 1000px; 
             margin: 0 auto;
             border: 1px solid rgba(255, 255, 255, 0.5);
+            flex-wrap: wrap; 
+            gap: 0.5rem;
         }
         .quick-icon-wrapper {
             display: flex; align-items: center; gap: 0.6rem; 
             cursor: pointer; transition: all 0.3s ease; color: #002845;
-            padding: 0.4rem 0.8rem;
-            border-radius: 10px;
+            padding: 0.4rem 0.6rem;
+            border-radius: 8px;
         }
         .quick-icon-wrapper:hover { background: rgba(255,255,255,0.6); transform: translateY(-3px); }
         .quick-circle {
@@ -127,19 +147,19 @@
             background: white; 
             border: 1px solid rgba(0, 40, 69, 0.1);
             display: flex; align-items: center; justify-content: center;
-            font-size: 0.85rem; transition: all 0.3s ease; color: #2A8B92;
+            font-size: 0.8rem; transition: all 0.3s ease; color: #2A8B92;
         }
         .quick-icon-wrapper:hover .quick-circle { background: #002845; color: #fff; border-color: #002845; }
-        .quick-text { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; }
+        .quick-text { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
 
-        /* --- MENU LATERAL --- */
+        /* --- MENU LATERAL (DRAWER) --- */
         #side-menu {
             position: fixed; top: 0; left: 0; height: 100%; width: 320px;
-            background: rgba(0, 40, 69, 0.98); backdrop-filter: blur(25px);
+            background: rgba(0, 40, 69, 0.98); backdrop-filter: blur(20px);
             z-index: 2000; transform: translateX(-101%);
             transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
             border-right: 1px solid rgba(42, 139, 146, 0.3);
-            box-shadow: 20px 0 50px rgba(0,0,0,0.3);
+            box-shadow: 20px 0 50px rgba(0,0,0,0.4);
         }
         #side-menu.drawer-open { transform: translateX(0); }
         
@@ -149,7 +169,7 @@
             margin-bottom: 2rem; display: flex; justify-content: center; align-items: center;
         }
 
-        /* --- EV CHAT --- */
+        /* --- EV CHAT INTERFACE --- */
         #ev-container { 
             position: fixed; bottom: 2rem; right: 2rem; z-index: 90; 
             display: flex; flex-direction: column; align-items: flex-end; cursor: pointer;
@@ -193,6 +213,27 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
             line-height: 1.1;
+        }
+
+        /* --- VENTANA MODAL A PANTALLA COMPLETA --- */
+        #info-modal {
+            background: rgba(0, 20, 40, 0.85); backdrop-filter: blur(10px);
+            position: fixed; inset: 0; z-index: 3000;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+            padding: 1rem;
+        }
+        #info-modal.active { opacity: 1; pointer-events: auto; }
+        .modal-content-window {
+            background: white; width: 100%; max-width: 900px; height: 90vh; max-height: 800px;
+            border-radius: 24px; padding: 0; overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+            transform: scale(0.95); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; flex-col; position: relative;
+        }
+        #info-modal.active .modal-content-window { transform: scale(1); }
+        #modal-image-header {
+            background-size: cover; background-position: center;
         }
     </style>
 </head>
@@ -248,8 +289,8 @@
     </div>
     <div id="backdrop" onclick="toggleMenu()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[900] hidden opacity-0 transition-opacity duration-300"></div>
 
-    <!-- HERO SLIDER (ESTILO AJUSTADO) -->
-    <header id="inicio" class="relative h-[82vh] flex items-center overflow-hidden">
+    <!-- HERO SLIDER -->
+    <header id="inicio" class="relative h-[92vh] flex items-center overflow-hidden">
         <button class="slider-nav-btn slider-prev" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
         <button class="slider-nav-btn slider-next" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
 
@@ -258,6 +299,7 @@
             <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?q=80&w=2554&auto=format&fit=crop');"></div>
             <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop');"></div>
             <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2669&auto=format&fit=crop');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2670&auto=format&fit=crop');"></div>
         </div>
         <div class="hero-overlay"></div>
 
@@ -266,7 +308,6 @@
                 <div id="hero-text-content">
                     <div class="hero-text-item active">
                         <div class="inline-block bg-brandTeal/90 backdrop-blur-md px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest shadow-lg mb-4">Gestión de Riesgos</div>
-                        <!-- TAMAÑO DE LETRA REDUCIDO ADICIONALMENTE -->
                         <h1 class="text-2xl md:text-4xl font-black leading-tight drop-shadow-xl mb-4">Viaja con <br><span class="text-brandTeal">Libertad Total</span></h1>
                         <p class="text-sm md:text-base font-medium text-gray-100 drop-shadow-md bg-brandDark/40 p-4 md:p-5 rounded-2xl backdrop-blur-sm border-l-8 border-brandTeal max-w-xl text-justify leading-relaxed">Tu vehículo protegido en cada kilómetro. Asistencia vial 24/7 y cobertura completa con el mejor respaldo del mercado ecuatoriano.</p>
                     </div>
@@ -285,6 +326,11 @@
                         <h1 class="text-2xl md:text-4xl font-black leading-tight drop-shadow-xl mb-4">Estrategia que <br><span class="text-brandGold">Da Frutos</span></h1>
                         <p class="text-sm md:text-base font-medium text-gray-100 drop-shadow-md bg-brandDark/40 p-4 md:p-5 rounded-2xl backdrop-blur-sm border-l-8 border-brandGold max-w-xl text-justify leading-relaxed">Asesoría técnica para el crecimiento sostenible de tu patrimonio empresarial y cumplimiento normativo integral.</p>
                     </div>
+                    <div class="hero-text-item">
+                        <div class="inline-block bg-indigo-600/90 backdrop-blur-md px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest shadow-lg mb-4">Marketing Digital</div>
+                        <h1 class="text-2xl md:text-4xl font-black leading-tight drop-shadow-xl mb-4">Proyecta <br><span class="text-indigo-400">Autoridad Visual</span></h1>
+                        <p class="text-sm md:text-base font-medium text-gray-100 drop-shadow-md bg-brandDark/40 p-4 md:p-5 rounded-2xl backdrop-blur-sm border-l-8 border-indigo-500 max-w-xl text-justify leading-relaxed">Producción audiovisual 4K y gestión de redes sociales. Eleva la reputación de tu empresa con contenido cinematográfico y estrategia multiplataforma.</p>
+                    </div>
                 </div>
                 <div class="flex flex-wrap gap-4 pt-4">
                     <button onclick="document.getElementById('servicios').scrollIntoView({behavior: 'smooth'})" class="bg-brandTeal text-white px-6 py-2.5 rounded-full font-bold shadow-lg hover:bg-white hover:text-brandDark transition-all hover:scale-105 text-xs">Ver Servicios</button>
@@ -294,7 +340,7 @@
         </div>
     </header>
 
-    <!-- QUICK ACCESS BAR (UBICADA DEBAJO DEL CAROUSEL) -->
+    <!-- QUICK ACCESS BAR -->
     <div class="quick-access-wrapper">
         <div class="quick-access-bar">
             <div class="quick-icon-wrapper" onclick="showInfo('Vehículos')">
@@ -317,6 +363,10 @@
                 <div class="quick-circle"><i class="fas fa-briefcase"></i></div>
                 <span class="quick-text">Pymes</span>
             </div>
+            <div class="quick-icon-wrapper" onclick="showInfo('Marketing')">
+                <div class="quick-circle" style="color: #4f46e5;"><i class="fas fa-video"></i></div>
+                <span class="quick-text">Audiovisual</span>
+            </div>
         </div>
     </div>
 
@@ -324,9 +374,9 @@
     <main class="container mx-auto px-4 pb-12 max-w-6xl space-y-12">
         
         <!-- VISION SECTION -->
-        <section id="vision">
+        <section id="vision" class="glass-shine rounded-[2rem]">
             <div class="grid md:grid-cols-2 gap-8 items-center bg-white rounded-[2rem] p-6 md:p-10 shadow-xl border border-slate-100">
-                <div class="space-y-4 text-left">
+                <div class="space-y-4 text-left relative z-30">
                     <span class="text-brandTeal font-bold text-[10px] uppercase tracking-widest bg-teal-50 px-4 py-1.5 rounded-full mb-1 inline-block">Nuestra Esencia</span>
                     <h3 class="text-3xl section-title text-brandDark text-left">Seguridad que impulsa tu <span class="text-brandGold">Crecimiento.</span></h3>
                     <p class="text-gray-600 leading-relaxed text-base text-justify">En <strong>EvoluSer</strong>, entendemos el mercado local. Integramos soluciones de gestión de riesgos con estrategias comerciales sólidas, asegurando un crecimiento estable y seguro para nuestros clientes.</p>
@@ -335,7 +385,7 @@
                         <li class="flex items-center text-sm font-bold text-brandDark"><i class="fas fa-check-circle text-brandTeal mr-3"></i> Asesoría técnica especializada</li>
                     </ul>
                 </div>
-                <div class="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-lg group cursor-pointer" onclick="openWhatsapp()">
+                <div class="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-lg group cursor-pointer z-30" onclick="openWhatsapp()">
                     <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1000&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Estrategia">
                     <div class="absolute inset-0 bg-gradient-to-t from-brandDark/80 to-transparent flex items-end p-6">
                         <h4 class="text-white font-bold text-lg text-left">Tu futuro, asegurado con EvoluSer.</h4>
@@ -344,56 +394,89 @@
             </div>
         </section>
 
-        <!-- SERVICES -->
+        <!-- SERVICES (4 Columnas) -->
         <section id="servicios">
             <h3 class="text-2xl font-bold text-brandDark mb-6 text-center uppercase tracking-wider">Soluciones Integrales</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="glass-card p-6 rounded-2xl cursor-pointer group" onclick="showInfo('Internet')">
-                    <div class="w-10 h-10 bg-teal-50 rounded-xl flex items-center justify-center mb-4 text-brandTeal text-lg group-hover:bg-brandTeal group-hover:text-white transition-colors"><i class="fas fa-network-wired"></i></div>
-                    <h4 class="font-bold text-lg text-brandDark mb-1 text-left">Internet y Conectividad</h4>
-                    <p class="text-xs text-gray-500 mb-3 text-left">Planes móviles, hogar y negocios.</p>
-                    <span class="text-[10px] font-bold text-brandTeal uppercase tracking-widest group-hover:underline">Detalles</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-card glass-shine p-6 rounded-2xl cursor-pointer group hover:-translate-y-1 transition-transform" onclick="showInfo('Internet')">
+                    <div class="w-10 h-10 bg-teal-50 rounded-xl flex items-center justify-center mb-4 text-brandTeal text-lg group-hover:bg-brandTeal group-hover:text-white transition-colors relative z-30"><i class="fas fa-network-wired"></i></div>
+                    <h4 class="font-bold text-lg text-brandDark mb-1 text-left relative z-30">Internet y Conectividad</h4>
+                    <p class="text-xs text-gray-500 mb-3 text-left relative z-30">Planes móviles, hogar y negocios.</p>
+                    <span class="text-[10px] font-bold text-brandTeal uppercase tracking-widest group-hover:underline relative z-30">Detalles</span>
                 </div>
-                <div class="glass-card p-6 rounded-2xl cursor-pointer group" onclick="showInfo('Seguros')">
-                    <div class="w-10 h-10 bg-yellow-50 rounded-xl flex items-center justify-center mb-4 text-brandGold text-lg group-hover:bg-brandGold group-hover:text-white transition-colors"><i class="fas fa-shield-alt"></i></div>
-                    <h4 class="font-bold text-lg text-brandDark mb-1 text-left">Seguros Integrales</h4>
-                    <p class="text-xs text-gray-500 mb-3 text-left">Todas las coberturas en un solo lugar.</p>
-                    <span class="text-[10px] font-bold text-brandGold uppercase tracking-widest group-hover:underline">Detalles</span>
+                <div class="glass-card glass-shine p-6 rounded-2xl cursor-pointer group hover:-translate-y-1 transition-transform" onclick="showInfo('Seguros')">
+                    <div class="w-10 h-10 bg-yellow-50 rounded-xl flex items-center justify-center mb-4 text-brandGold text-lg group-hover:bg-brandGold group-hover:text-white transition-colors relative z-30"><i class="fas fa-shield-alt"></i></div>
+                    <h4 class="font-bold text-lg text-brandDark mb-1 text-left relative z-30">Seguros Integrales</h4>
+                    <p class="text-xs text-gray-500 mb-3 text-left relative z-30">Todas las coberturas en un solo lugar.</p>
+                    <span class="text-[10px] font-bold text-brandGold uppercase tracking-widest group-hover:underline relative z-30">Detalles</span>
                 </div>
-                <div class="glass-card p-6 rounded-2xl cursor-pointer group" onclick="showInfo('Vehículos')">
-                    <div class="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mb-4 text-brandDark text-lg group-hover:bg-brandDark group-hover:text-white transition-colors"><i class="fas fa-car-side"></i></div>
-                    <h4 class="font-bold text-lg text-brandDark mb-1 text-left">Movilidad</h4>
-                    <p class="text-xs text-gray-500 mb-3 text-left">Seguros para flotas y particulares.</p>
-                    <span class="text-[10px] font-bold text-brandDark uppercase tracking-widest group-hover:underline">Detalles</span>
+                <div class="glass-card glass-shine p-6 rounded-2xl cursor-pointer group hover:-translate-y-1 transition-transform" onclick="showInfo('Vehículos')">
+                    <div class="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mb-4 text-brandDark text-lg group-hover:bg-brandDark group-hover:text-white transition-colors relative z-30"><i class="fas fa-car-side"></i></div>
+                    <h4 class="font-bold text-lg text-brandDark mb-1 text-left relative z-30">Movilidad</h4>
+                    <p class="text-xs text-gray-500 mb-3 text-left relative z-30">Seguros para flotas y particulares.</p>
+                    <span class="text-[10px] font-bold text-brandDark uppercase tracking-widest group-hover:underline relative z-30">Detalles</span>
+                </div>
+                <div class="glass-card glass-shine p-6 rounded-2xl cursor-pointer group hover:-translate-y-1 transition-transform" onclick="showInfo('Marketing')">
+                    <div class="w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center mb-4 text-indigo-600 text-lg group-hover:bg-indigo-600 group-hover:text-white transition-colors relative z-30"><i class="fas fa-video"></i></div>
+                    <h4 class="font-bold text-lg text-brandDark mb-1 text-left relative z-30">Audiovisual 4K</h4>
+                    <p class="text-xs text-gray-500 mb-3 text-left relative z-30">Producción y marketing digital.</p>
+                    <span class="text-[10px] font-bold text-indigo-600 uppercase tracking-widest group-hover:underline relative z-30">Detalles</span>
                 </div>
             </div>
         </section>
 
-        <!-- LIDERAZGO -->
+        <!-- LIDERAZGO EJECUTIVO (3 columnas) -->
         <section class="bg-brandDark/5 rounded-[3rem] p-8 md:p-12 text-center">
             <h4 class="text-[10px] font-bold text-brandDark/60 uppercase tracking-widest mb-8">Liderazgo Ejecutivo</h4>
-            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <div class="bg-white p-5 rounded-2xl shadow-sm flex items-center gap-4 text-left border-l-4 border-brandGold">
-                    <div class="w-16 h-16 bg-gray-200 rounded-xl overflow-hidden flex-shrink-0 shadow-md">
-                        <img src="https://ui-avatars.com/api/?name=Dolores+Ortega&background=C5A059&color=fff&size=128" class="w-full h-full object-cover" alt="Dolores Ortega">
+            <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <div class="bg-white p-5 rounded-2xl shadow-sm flex items-center gap-4 text-left border-l-4 border-brandGold hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-gray-200 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
+                        <!-- FOTO ACTUALIZADA DOLORES ORTEGA -->
+                        <img src="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/%C3%B1a%C3%B1ita%20evoluser.png" class="w-full h-full object-cover object-top" alt="Dolores Ortega">
                     </div>
                     <div>
-                        <h4 class="font-bold text-brandDark text-sm">Dolores Eugenia Ortega Rogel</h4>
+                        <h4 class="font-bold text-brandDark text-sm">Dolores Ortega Rogel</h4>
                         <p class="text-[9px] text-gray-500 uppercase font-bold tracking-wide mt-1">Socio Directora</p>
+                        <p class="text-[9px] text-brandGold font-bold mt-0.5">Comercial & Seguros</p>
                     </div>
                 </div>
-                <div class="bg-white p-5 rounded-2xl shadow-sm flex items-center gap-4 text-left border-l-4 border-brandTeal">
-                    <div class="w-16 h-16 bg-gray-200 rounded-xl overflow-hidden flex-shrink-0 shadow-md">
+                <div class="bg-white p-5 rounded-2xl shadow-sm flex items-center gap-4 text-left border-l-4 border-brandTeal hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-gray-200 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
                         <img src="https://raw.githubusercontent.com/direccioncomercial/evoluser-web/1b862973e8003850daadd6a47bffd5b6cf04b2f6/imagen3.png" class="w-full h-full object-cover" alt="Christian Ortega">
                     </div>
                     <div>
-                        <h4 class="font-bold text-brandDark text-sm">Christian Roberth Ortega Rogel</h4>
+                        <h4 class="font-bold text-brandDark text-sm">Christian Ortega Rogel</h4>
                         <p class="text-[9px] text-gray-500 uppercase font-bold tracking-wide mt-1">Socio Director</p>
+                        <p class="text-[9px] text-brandTeal font-bold mt-0.5">Técnico & Estrategia</p>
+                    </div>
+                </div>
+                <div class="bg-white p-5 rounded-2xl shadow-sm flex items-center gap-4 text-left border-l-4 border-indigo-500 hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-gray-200 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
+                        <img src="https://raw.githubusercontent.com/direccioncomercial/evoluser-web/main/imagen2.png" class="w-full h-full object-cover object-top" alt="Nury Echeverria">
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-brandDark text-sm">Nury Echeverría</h4>
+                        <p class="text-[9px] text-gray-500 uppercase font-bold tracking-wide mt-1">Socio Directora</p>
+                        <p class="text-[9px] text-indigo-500 font-bold mt-0.5">Producción & Mktg 4K</p>
                     </div>
                 </div>
             </div>
-            <p class="mt-6 text-xs text-gray-500 italic max-w-xl mx-auto leading-relaxed">"Gestionamos en equipo soluciones integrales que potencian el ser y protegen la vida."</p>
+            <p class="mt-8 text-xs text-gray-500 italic max-w-xl mx-auto leading-relaxed">"Gestionamos en equipo soluciones integrales que potencian el ser, protegen tu patrimonio y elevan la autoridad de tu marca."</p>
         </section>
+
+        <!-- CLIENTES Y ALIADOS ESTRATÉGICOS -->
+        <section id="clientes" class="text-center pt-4">
+            <h4 class="text-[10px] font-bold text-brandDark/60 uppercase tracking-widest mb-8">Confían en Nosotros</h4>
+            <div class="glass-card glass-shine rounded-[2.5rem] p-8 md:p-12 flex flex-wrap justify-center items-center gap-10 md:gap-24 shadow-sm border border-slate-100 relative">
+                <div class="relative z-30 grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100 cursor-pointer transform hover:scale-105">
+                    <img src="https://recaudappec.com/wp-content/uploads/2025/11/Logotipo-RECAUDAPP-Plano-Color-1024x338.png" alt="Recaudapp" class="h-10 md:h-14 object-contain">
+                </div>
+                <div class="relative z-30 grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100 cursor-pointer transform hover:scale-105">
+                    <img src="https://p16-common-sign.tiktokcdn.com/tos-maliva-avt-0068/fcd79de61624cc2555ea2c93c26c4e38~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=1fdb2d9c&x-expires=1778472000&x-signature=IW4xV%2F1syEFpJCMfBplVKWAxNJA%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my" alt="Cliente y Aliado" class="h-14 md:h-16 rounded-2xl object-contain shadow-sm">
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- EV: AI CHAT WINDOW -->
@@ -422,18 +505,30 @@
         </div>
     </div>
 
-    <!-- MODAL -->
+    <!-- NUEVO MODAL DE DETALLES (VENTANA COMPLETA) -->
     <div id="info-modal">
-        <div class="modal-content">
-            <button onclick="closeInfo()" class="absolute top-4 right-4 text-gray-400 hover:text-brandDark"><i class="fas fa-times text-xl"></i></button>
-            <div class="text-center mb-6">
-                <div id="modal-icon" class="w-14 h-14 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl text-brandTeal"></div>
-                <h3 id="modal-title" class="text-xl font-bold text-brandDark"></h3>
+        <div class="modal-content-window flex flex-col">
+            <!-- Botón de cierre superior derecho superpuesto -->
+            <button onclick="closeInfo()" class="absolute top-4 right-4 z-50 bg-black/40 backdrop-blur-md text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-brandGold transition-colors shadow-lg"><i class="fas fa-times text-lg"></i></button>
+            
+            <!-- Banner Fotográfico Superior -->
+            <div id="modal-image-header" class="h-48 md:h-64 w-full bg-cover bg-center relative flex-shrink-0">
+                <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+                <!-- Icono Superpuesto -->
+                <div class="absolute -bottom-8 left-8 flex items-end gap-4">
+                    <div id="modal-icon" class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-4xl shadow-xl z-10 border border-slate-100"></div>
+                </div>
             </div>
-            <p id="modal-text" class="text-gray-600 text-sm leading-relaxed mb-6 text-center px-4"></p>
-            <button onclick="cotizarActual()" class="w-full bg-brandTeal text-white py-3 rounded-xl font-bold hover:bg-brandDark transition-colors flex items-center justify-center gap-2">
-                <i class="fab fa-whatsapp text-lg"></i> Solicitar Asesoría
-            </button>
+
+            <!-- Contenido Inferior Desplazable -->
+            <div class="px-8 md:px-12 pb-10 pt-14 overflow-y-auto flex-1 flex flex-col bg-white">
+                <h3 id="modal-title" class="text-2xl md:text-3xl font-black text-brandDark mb-4"></h3>
+                <div id="modal-text" class="text-gray-600 text-sm md:text-base leading-relaxed mb-8 flex-1"></div>
+                
+                <button onclick="cotizarActual()" class="w-full bg-brandDark text-white py-4 rounded-xl font-bold hover:bg-brandTeal transition-all duration-300 flex items-center justify-center gap-3 shadow-xl mt-auto transform hover:scale-[1.02]">
+                    <i class="fab fa-whatsapp text-2xl"></i> Solicitar Asesoría Personalizada
+                </button>
+            </div>
         </div>
     </div>
 
@@ -449,7 +544,7 @@
                              <span class="text-[9px] text-brandTeal uppercase tracking-[0.2em]">Comercial</span>
                         </div>
                     </div>
-                    <p class="text-gray-400 text-[11px] max-w-xs mx-auto md:mx-0 leading-relaxed">Consultoría experta en gestión de riesgos, seguros y estrategia comercial en Ecuador.</p>
+                    <p class="text-gray-400 text-[11px] max-w-xs mx-auto md:mx-0 leading-relaxed">Consultoría experta en gestión de riesgos, seguros, estrategia comercial y posicionamiento audiovisual en Ecuador.</p>
                 </div>
                 <div class="text-center">
                     <h5 class="font-bold text-[9px] uppercase tracking-[0.2em] text-brandTeal mb-4">Síguenos</h5>
@@ -476,12 +571,106 @@
     </footer>
 
     <script>
+        // --- DATA DE SERVICIOS (CON IMÁGENES PROFESIONALES PARA EL NUEVO MODAL) ---
         const serviceData = {
-            'Vehículos': { title: 'Movilidad Segura Integral', content: 'Gestión de riesgos para flotas y particulares. Cobertura completa ante accidentes, robo y responsabilidad civil.', icon: '<i class="fas fa-car"></i>' },
-            'Salud': { title: 'Bienestar Corporativo', content: 'Asesoría en planes de medicina prepagada y vida para equipos y familias.', icon: '<i class="fas fa-heartbeat"></i>' },
-            'Seguros': { title: 'Seguros Integrales', content: 'Asesoría completa en todos los ramos: Vida, Médica, Activos, Incendio y Ramos Técnicos.', icon: '<i class="fas fa-shield-alt"></i>' },
-            'Internet': { title: 'Conectividad Total', content: 'Soluciones en planes móviles, internet hogar, Pymes y corporativos.', icon: '<i class="fas fa-wifi"></i>' },
-            'Comercial': { title: 'Consultoría Pymes', content: 'Estructuración de modelos de negocio y estrategias comerciales.', icon: '<i class="fas fa-chart-line"></i>' }
+            'Vehículos': { 
+                title: 'Movilidad Segura Integral', 
+                icon: '<i class="fas fa-car text-brandTeal"></i>',
+                image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=1200',
+                content: `
+                    <div class="text-left space-y-4">
+                        <p class="text-lg">Protegemos tu patrimonio en movimiento con las pólizas más robustas y eficientes del mercado automotriz.</p>
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandTeal text-xl mt-0.5"></i> <span><strong>Cobertura Total:</strong> Protección financiera contra choques, daños a terceros, robo total o parcial del vehículo.</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandTeal text-xl mt-0.5"></i> <span><strong>Asistencia VIP 24/7:</strong> Servicio de grúa ininterrumpido, auxilio mecánico en vía, cerrajería y provisión de auto sustituto.</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandTeal text-xl mt-0.5"></i> <span><strong>Flotas Empresariales:</strong> Análisis de riesgo personalizado, tarifas preferenciales para empresas y gestión centralizada de siniestros.</span></li>
+                            </ul>
+                        </div>
+                    </div>`
+            },
+            'Salud': { 
+                title: 'Bienestar y Salud Corporativa', 
+                icon: '<i class="fas fa-heartbeat text-pink-500"></i>',
+                image: 'https://images.unsplash.com/photo-1504439468489-c8920d786a2b?auto=format&fit=crop&q=80&w=1200',
+                content: `
+                    <div class="text-left space-y-4">
+                        <p class="text-lg">El bienestar de tu familia y equipo es nuestra máxima prioridad. Diseñamos planes médicos y de vida a tu medida.</p>
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-pink-500 text-xl mt-0.5"></i> <span><strong>Medicina Prepagada:</strong> Acceso garantizado a la mejor red de hospitales y clínicas de excelencia a nivel nacional e internacional.</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-pink-500 text-xl mt-0.5"></i> <span><strong>Seguros de Vida:</strong> Protección financiera sólida e irrevocable para tus seres queridos ante cualquier eventualidad.</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-pink-500 text-xl mt-0.5"></i> <span><strong>Beneficios Adicionales:</strong> Cobertura dental completa, atención de maternidad, servicios de telemedicina y provisión de medicinas continuas.</span></li>
+                            </ul>
+                        </div>
+                    </div>`
+            },
+            'Seguros': { 
+                title: 'Seguros Integrales & Activos', 
+                icon: '<i class="fas fa-shield-alt text-brandGold"></i>',
+                image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1200',
+                content: `
+                    <div class="text-left space-y-4">
+                        <p class="text-lg">Blindamos la infraestructura y las operaciones de tu empresa contra imprevistos catastróficos que puedan detener tu negocio.</p>
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandGold text-xl mt-0.5"></i> <span><strong>Multiriesgo Industrial:</strong> Cobertura exhaustiva contra incendios, terremotos, inundaciones y daños severos por agua.</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandGold text-xl mt-0.5"></i> <span><strong>Responsabilidad Civil:</strong> Protección jurídica y financiera ante daños a terceros ocasionados en el ejercicio de tu actividad comercial.</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandGold text-xl mt-0.5"></i> <span><strong>Lucro Cesante:</strong> Garantizamos el flujo de tus ingresos fijos si tu operación se detiene temporalmente a causa de un siniestro cubierto.</span></li>
+                            </ul>
+                        </div>
+                    </div>`
+            },
+            'Internet': { 
+                title: 'Conectividad Total Corporativa', 
+                icon: '<i class="fas fa-wifi text-blue-500"></i>',
+                image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200',
+                content: `
+                    <div class="text-left space-y-4">
+                        <p class="text-lg">Ofrecemos soluciones de comunicación de alta disponibilidad y tecnología punta para mantener tu negocio siempre en línea.</p>
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-blue-500 text-xl mt-0.5"></i> <span><strong>Enlaces Dedicados:</strong> Internet de fibra óptica 100% simétrico y exclusivo, garantizando estabilidad para tu empresa.</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-blue-500 text-xl mt-0.5"></i> <span><strong>Telefonía Móvil:</strong> Gestión de planes corporativos y flotas de celulares con minutos y paquetes de datos ilimitados.</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-blue-500 text-xl mt-0.5"></i> <span><strong>Internet Hogar:</strong> Las mejores y más competitivas tarifas de ultra velocidad para pequeñas Pymes y domicilios particulares.</span></li>
+                            </ul>
+                        </div>
+                    </div>`
+            },
+            'Comercial': { 
+                title: 'Consultoría Comercial Pymes', 
+                icon: '<i class="fas fa-briefcase text-brandDark"></i>',
+                image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1200',
+                content: `
+                    <div class="text-left space-y-4">
+                        <p class="text-lg">Transformamos la visión de tu negocio en una estructura rentable, completamente formal y lista para escalar.</p>
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandDark text-xl mt-0.5"></i> <span><strong>Estrategia de Ventas:</strong> Diseño técnico de embudos comerciales y capacitación intensiva de equipos de ventas.</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandDark text-xl mt-0.5"></i> <span><strong>Formalización Empresarial:</strong> Asesoría experta en la creación de empresas, estructuración societaria y cumplimiento normativo.</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandDark text-xl mt-0.5"></i> <span><strong>Optimización:</strong> Análisis profundo de rentabilidad, estrategias de reducción de costos y estructuración de procesos eficientes.</span></li>
+                            </ul>
+                        </div>
+                    </div>`
+            },
+            'Marketing': { 
+                title: 'Producción Audiovisual 4K', 
+                icon: '<i class="fas fa-video text-indigo-600"></i>',
+                image: 'https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&q=80&w=1200',
+                content: `
+                    <div class="text-left space-y-4">
+                        <p class="text-lg">Eleve la autoridad de su marca con contenido cinematográfico y una estrategia de marketing multiplataforma de primer nivel por solo <strong class="text-indigo-600 text-xl">$80 USD</strong>.</p>
+                        <div class="bg-indigo-50/50 p-6 rounded-xl border border-indigo-100">
+                            <h4 class="font-bold text-brandDark mb-4 uppercase tracking-wider text-sm">¿Qué incluye el servicio?</h4>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-indigo-600 text-xl mt-0.5"></i> <span><strong>Calidad Premium 4K:</strong> Grabación in-situ con iluminación profesional y formato logarítmico (ProRes) para una colorización cinematográfica impecable.</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-indigo-600 text-xl mt-0.5"></i> <span><strong>Servicio Integral (4 en 1):</strong> Nos encargamos de todo: elaboración del guion institucional, grabación, edición con ritmo dinámico y subtítulos animados.</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-indigo-600 text-xl mt-0.5"></i> <span><strong>Publicación Estratégica:</strong> Gestión de posteo coordinado en TikTok, Instagram y Facebook con Copy optimizado y un análisis de Hashtags ganadores.</span></li>
+                                <li class="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-brandGold/30"><i class="fas fa-gift text-brandGold text-2xl"></i> <span class="text-brandDark font-bold">BONO EXCLUSIVO: Reciba el diseño gráfico profesional de un (1) Post promocional adicional para potenciar sus redes.</span></li>
+                            </ul>
+                        </div>
+                    </div>`
+            }
         };
 
         function toggleMenu() {
@@ -543,20 +732,31 @@
 
         function getAIResponse(query) {
             const q = query.toLowerCase();
-            if (q.includes('hola')) return '¡Hola! Bienvenido. Soy <strong>EV</strong>. ¿En qué puedo asesorarle hoy?';
+            if (q.includes('hola')) return '¡Hola! Bienvenido a EvoluSer. 🤖 ¿Desea conocer sobre nuestros seguros, conectividad o servicios de marketing audiovisual?';
             if (q.includes('auto')) return 'Ofrecemos seguros vehiculares con cobertura total y asistencia 24/7. 🚗 ¿Le gustaría cotizar?';
             if (q.includes('internet')) return 'Contamos con planes de internet de alta velocidad para hogares y empresas. 📶 ¿En qué ciudad se encuentra?';
-            return 'Entiendo. Para brindarte una asesoría técnica profesional, le sugiero conversar directamente con nuestros directores vía WhatsApp: <br><a href="https://wa.me/593983900050" target="_blank" class="text-brandTeal font-bold underline">Chatear ahora</a>';
+            if (q.includes('video') || q.includes('marketing') || q.includes('redes') || q.includes('4k') || q.includes('audiovisual')) return '¡Excelente elección! 🎬 Nuestro paquete Audiovisual 4K cuesta solo $80 USD. Incluye grabación profesional in-situ, edición cinematográfica, guion, publicación en redes sociales y un post adicional de regalo. Dirigido por nuestra especialista Nury Echeverría. ¿Te gustaría agendar una grabación?';
+            return 'Entiendo. Para brindarle una asesoría técnica profesional, le sugiero conversar directamente con nuestros directores vía WhatsApp: <br><a href="https://wa.me/593983900050" target="_blank" class="text-brandTeal font-bold underline">Chatear ahora</a>';
         }
 
+        // --- APERTURA DE MODAL A PANTALLA COMPLETA ---
         function showInfo(service) {
             const data = serviceData[service] || serviceData['Seguros'];
             document.getElementById('modal-title').innerText = data.title;
-            document.getElementById('modal-text').innerText = data.content;
+            document.getElementById('modal-text').innerHTML = data.content;
             document.getElementById('modal-icon').innerHTML = data.icon;
+            document.getElementById('modal-image-header').style.backgroundImage = `url('${data.image}')`;
+            
+            // Bloqueamos el scroll del body al abrir el modal para mayor inmersión
+            document.body.style.overflow = 'hidden';
             document.getElementById('info-modal').classList.add('active');
         }
-        function closeInfo() { document.getElementById('info-modal').classList.remove('active'); }
+        
+        function closeInfo() { 
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+            document.getElementById('info-modal').classList.remove('active'); 
+        }
+
         function cotizarActual() { window.open('https://wa.me/593983900050', '_blank'); }
         function openWhatsapp() { window.open('https://wa.me/593983900050', '_blank'); }
 

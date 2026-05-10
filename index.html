@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EvoluSer - Gestión de Riesgos y Estrategia</title>
-    <meta name="description" content="Gestión integral de seguros, consultoría y marketing audiovisual en Ecuador.">
+    <!-- MEJORA TEXTUAL EN META DESCRIPTION -->
+    <meta name="description" content="Blindamos su patrimonio y proyectamos la autoridad de su marca mediante un ecosistema integral de gestión de riesgos, estrategia comercial y producción audiovisual de vanguardia en Ecuador.">
     <meta name="theme-color" content="#002845">
     
     <!-- LIBRERÍAS EXTERNAS -->
@@ -56,7 +57,8 @@
             100% { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
         .animate-entrance {
-            animation: fadeUpEntrance 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            opacity: 0;
+            animation: fadeUpEntrance 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
         .delay-100 { animation-delay: 100ms; opacity: 0; }
         .delay-200 { animation-delay: 200ms; opacity: 0; }
@@ -112,7 +114,7 @@
             position: absolute; top: 50%; transform: translateY(-50%); z-index: 30;
             background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px);
             color: white; border: 1px solid rgba(255, 255, 255, 0.3);
-            width: 48px; height: 48px; border-radius: 50%;
+            width: 44px; height: 44px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             cursor: pointer; transition: all 0.3s ease;
         }
@@ -201,7 +203,6 @@
     <!-- NAVBAR (TRANSPARENCIA 65%) -->
     <nav class="fixed top-0 w-full glass-navbar px-6 py-4 flex justify-between items-center h-20 animate-entrance">
         <div class="flex items-center gap-3 cursor-pointer" onclick="navigate('home')">
-            <!-- NUEVO LOGO EVOLUSER COMERCIAL EN EL NAVBAR -->
             <img src="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/logo_evoluser_comercial-sin%20fondo1.png" alt="Logo EvoluSer Comercial" class="h-10 md:h-12 w-auto object-contain">
         </div>
         
@@ -227,7 +228,6 @@
         <div class="p-8 pt-24 h-full overflow-y-auto relative text-white">
             <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white/60 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10"><i class="fas fa-times text-lg"></i></button>
             <div class="menu-logo-glass transform hover:scale-105 transition-transform duration-500 cursor-pointer" onclick="navigate('home'); toggleMenu();">
-                <!-- NUEVO LOGO EVOLUSER COMERCIAL EN EL MENÚ LATERAL -->
                 <img src="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/logo_evoluser_comercial-sin%20fondo1.png" alt="Logo EvoluSer Comercial" class="h-12 md:h-14 w-auto object-contain">
             </div>
             <nav class="space-y-6">
@@ -334,7 +334,7 @@
             </div>
         </header>
 
-        <main class="container mx-auto px-4 py-16 max-w-6xl space-y-16">
+        <main class="container mx-auto px-4 py-16 max-w-6xl space-y-16 animate-entrance delay-200">
             <!-- VISION SECTION -->
             <section id="vision" class="glass-shine rounded-[2rem]">
                 <div class="grid md:grid-cols-2 gap-10 items-center bg-white rounded-[2rem] p-8 md:p-12 shadow-xl border border-slate-100">
@@ -342,7 +342,8 @@
                         <span class="text-brandTeal font-bold text-[10px] uppercase tracking-widest bg-teal-50 px-4 py-1.5 rounded-full mb-1 inline-block">Nuestra Esencia</span>
                         <h3 class="text-3xl section-title text-brandDark text-left">El ecosistema definitivo para tu <span class="text-brandGold">Crecimiento.</span></h3>
                         
-                        <p class="text-gray-600 leading-relaxed text-sm md:text-base text-justify">En <strong>EvoluSer</strong>, no nos limitamos a proteger tu presente; construimos y potenciamos el futuro de tu empresa. Integramos estratégicamente cuatro pilares corporativos para garantizar tu estabilidad y elevar tu autoridad en el mercado de manera inigualable.</p>
+                        <!-- MEJORA TEXTUAL AQUÍ -->
+                        <p class="text-gray-600 leading-relaxed text-sm md:text-base text-justify font-medium">Blindamos su patrimonio y proyectamos la autoridad de su marca mediante un ecosistema integral de gestión de riesgos, estrategia comercial y producción audiovisual de vanguardia en Ecuador.</p>
                         
                         <ul class="space-y-3 pt-4 text-left bg-slate-50 p-5 rounded-xl border border-slate-100 shadow-sm">
                             <li class="flex items-center text-sm font-bold text-brandDark"><i class="fas fa-shield-alt text-brandTeal w-8 text-lg"></i> Seguros Integrales y Patrimoniales</li>
@@ -354,13 +355,13 @@
                     <div class="relative h-full min-h-[350px] rounded-2xl overflow-hidden shadow-lg group cursor-pointer z-30" onclick="openWhatsapp()">
                         <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1000&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Estrategia">
                         <div class="absolute inset-0 bg-gradient-to-t from-brandDark/80 via-brandDark/40 to-transparent flex items-end p-8">
-                            <h4 class="text-white font-bold text-xl md:text-2xl text-left drop-shadow-md">Blindamos tu patrimonio y elevamos tu autoridad.</h4>
+                            <h4 class="text-white font-bold text-xl md:text-2xl text-left drop-shadow-md">Seguridad y Reputación: Los pilares de su éxito.</h4>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- LIDERAZGO EJECUTIVO -->
+            <!-- LIDERAZGO EJECUTIVO (3 columnas) -->
             <section id="liderazgo" class="bg-brandDark/5 rounded-[3rem] p-8 md:p-12 text-center">
                 <h4 class="text-[10px] font-bold text-brandDark/60 uppercase tracking-widest mb-10">Liderazgo Ejecutivo</h4>
                 <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -422,7 +423,7 @@
         <div class="pt-36 pb-16 text-center relative z-10 px-4">
             <span class="text-brandGold font-bold text-[10px] uppercase tracking-[0.3em] px-5 py-2 rounded-full mb-6 inline-block border border-brandGold/30 bg-brandGold/5">Portafolio Premium</span>
             <h2 class="text-4xl md:text-6xl font-black text-brandDark mb-6 tracking-tight">Ecosistema de <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandTeal to-brandDark">Soluciones</span></h2>
-            <p class="text-gray-500 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">Descubra nuestro portafolio integral diseñado exclusivamente para proteger su patrimonio, conectar su empresa con el mundo y elevar su autoridad en el mercado de manera estratégica.</p>
+            <p class="text-gray-500 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-medium text-center">Estrategias integrales diseñadas para blindar su patrimonio, garantizar su conectividad y elevar su reputación digital a un nivel superior.</p>
         </div>
 
         <main class="container mx-auto px-4 pb-24 max-w-7xl">
@@ -432,39 +433,29 @@
                 <div class="relative h-[420px] rounded-[2.5rem] overflow-hidden group cursor-pointer shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-200" onclick="showInfo('Vehículos')">
                     <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=1200" alt="Movilidad" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#002845] via-[#002845]/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
-                    
                     <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end z-10 transition-transform duration-500 group-hover:-translate-y-2">
                         <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-2xl mb-6 shadow-lg transition-colors duration-500 group-hover:bg-brandTeal">
                             <i class="fas fa-car"></i>
                         </div>
                         <h4 class="font-black text-3xl text-white mb-3">Movilidad</h4>
-                        <p class="text-sm text-gray-200 leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-500 mb-6">
-                            Protegemos tu patrimonio en movimiento con las pólizas más robustas y eficientes del mercado automotriz. Flotas y particulares.
-                        </p>
+                        <p class="text-sm text-gray-200 leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-500 mb-6">Protección vehicular integral con las pólizas más eficientes del mercado. Gestión especializada de riesgos móviles.</p>
                         <div class="w-12 h-1 bg-brandTeal mb-4 transition-all duration-700 group-hover:w-full group-hover:bg-brandGold"></div>
-                        <span class="text-[10px] font-bold text-white uppercase tracking-widest flex items-center gap-2 group-hover:text-brandGold transition-colors">
-                            Ver Detalles <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
-                        </span>
+                        <span class="text-[10px] font-bold text-white uppercase tracking-widest flex items-center gap-2 group-hover:text-brandGold transition-colors">Ver Detalles <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i></span>
                     </div>
                 </div>
 
                 <!-- Card 2: Salud -->
                 <div class="relative h-[420px] rounded-[2.5rem] overflow-hidden group cursor-pointer shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-200" onclick="showInfo('Salud')">
-                    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=1200" alt="Salud" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&q=80&w=1200" alt="Salud" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#002845] via-[#002845]/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
-                    
                     <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end z-10 transition-transform duration-500 group-hover:-translate-y-2">
                         <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-2xl mb-6 shadow-lg transition-colors duration-500 group-hover:bg-pink-500">
                             <i class="fas fa-heartbeat"></i>
                         </div>
                         <h4 class="font-black text-3xl text-white mb-3">Salud & Vida</h4>
-                        <p class="text-sm text-gray-200 leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-500 mb-6">
-                            El bienestar de tu familia y equipo es nuestra máxima prioridad. Diseñamos planes médicos y de vida a tu medida.
-                        </p>
+                        <p class="text-sm text-gray-200 leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-500 mb-6">Planes médicos y de vida diseñados a medida. Garantizamos el bienestar de su familia y equipo humano.</p>
                         <div class="w-12 h-1 bg-pink-500 mb-4 transition-all duration-700 group-hover:w-full group-hover:bg-brandGold"></div>
-                        <span class="text-[10px] font-bold text-white uppercase tracking-widest flex items-center gap-2 group-hover:text-brandGold transition-colors">
-                            Ver Detalles <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
-                        </span>
+                        <span class="text-[10px] font-bold text-white uppercase tracking-widest flex items-center gap-2 group-hover:text-brandGold transition-colors">Ver Detalles <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i></span>
                     </div>
                 </div>
 
@@ -472,39 +463,29 @@
                 <div class="relative h-[420px] rounded-[2.5rem] overflow-hidden group cursor-pointer shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-200" onclick="showInfo('Seguros')">
                     <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1200" alt="Patrimonio" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#002845] via-[#002845]/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
-                    
                     <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end z-10 transition-transform duration-500 group-hover:-translate-y-2">
                         <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-2xl mb-6 shadow-lg transition-colors duration-500 group-hover:bg-brandGold">
                             <i class="fas fa-shield-alt"></i>
                         </div>
                         <h4 class="font-black text-3xl text-white mb-3">Patrimonial</h4>
-                        <p class="text-sm text-gray-200 leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-500 mb-6">
-                            Blindamos la infraestructura y operaciones de tu empresa contra imprevistos catastróficos. Multiriesgo, incendio y RC.
-                        </p>
+                        <p class="text-sm text-gray-200 leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-500 mb-6">Blindaje de infraestructura y operaciones industriales ante incendios, responsabilidad civil y lucro cesante.</p>
                         <div class="w-12 h-1 bg-brandGold mb-4 transition-all duration-700 group-hover:w-full group-hover:bg-brandTeal"></div>
-                        <span class="text-[10px] font-bold text-white uppercase tracking-widest flex items-center gap-2 group-hover:text-brandTeal transition-colors">
-                            Ver Detalles <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
-                        </span>
+                        <span class="text-[10px] font-bold text-white uppercase tracking-widest flex items-center gap-2 group-hover:text-brandTeal transition-colors">Ver Detalles <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i></span>
                     </div>
                 </div>
 
                 <!-- Card 4: Internet -->
                 <div class="relative h-[420px] rounded-[2.5rem] overflow-hidden group cursor-pointer shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-200" onclick="showInfo('Internet')">
-                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1200" alt="Conectividad" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=1200" alt="Conectividad" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#002845] via-[#002845]/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
-                    
                     <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end z-10 transition-transform duration-500 group-hover:-translate-y-2">
                         <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-2xl mb-6 shadow-lg transition-colors duration-500 group-hover:bg-blue-500">
-                            <i class="fas fa-network-wired"></i>
+                            <i class="fas fa-wifi"></i>
                         </div>
                         <h4 class="font-black text-3xl text-white mb-3">Conectividad</h4>
-                        <p class="text-sm text-gray-200 leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-500 mb-6">
-                            Soluciones de comunicación de alta disponibilidad y tecnología punta. Enlaces dedicados, corporativos y hogar.
-                        </p>
+                        <p class="text-sm text-gray-200 leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-500 mb-6">Internet de fibra óptica de alta disponibilidad. Enlaces dedicados y telefonía móvil corporativa sin límites.</p>
                         <div class="w-12 h-1 bg-blue-500 mb-4 transition-all duration-700 group-hover:w-full group-hover:bg-brandGold"></div>
-                        <span class="text-[10px] font-bold text-white uppercase tracking-widest flex items-center gap-2 group-hover:text-brandGold transition-colors">
-                            Ver Detalles <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
-                        </span>
+                        <span class="text-[10px] font-bold text-white uppercase tracking-widest flex items-center gap-2 group-hover:text-brandGold transition-colors">Ver Detalles <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i></span>
                     </div>
                 </div>
 
@@ -512,19 +493,14 @@
                 <div class="relative h-[420px] rounded-[2.5rem] overflow-hidden group cursor-pointer shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-200" onclick="showInfo('Comercial')">
                     <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1200" alt="Consultoría" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#002845] via-[#002845]/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
-                    
                     <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end z-10 transition-transform duration-500 group-hover:-translate-y-2">
                         <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-2xl mb-6 shadow-lg transition-colors duration-500 group-hover:bg-slate-500">
                             <i class="fas fa-briefcase"></i>
                         </div>
                         <h4 class="font-black text-3xl text-white mb-3">Consultoría</h4>
-                        <p class="text-sm text-gray-200 leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-500 mb-6">
-                            Transformamos la visión de tu negocio en una estructura rentable. Formalización, ventas y optimización de procesos.
-                        </p>
+                        <p class="text-sm text-gray-200 leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-500 mb-6">Optimización comercial y formalización de Pymes. Convertimos su visión en una estructura rentable y escalable.</p>
                         <div class="w-12 h-1 bg-slate-500 mb-4 transition-all duration-700 group-hover:w-full group-hover:bg-brandTeal"></div>
-                        <span class="text-[10px] font-bold text-white uppercase tracking-widest flex items-center gap-2 group-hover:text-brandTeal transition-colors">
-                            Ver Detalles <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
-                        </span>
+                        <span class="text-[10px] font-bold text-white uppercase tracking-widest flex items-center gap-2 group-hover:text-brandTeal transition-colors">Ver Detalles <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i></span>
                     </div>
                 </div>
 
@@ -532,19 +508,14 @@
                 <div class="relative h-[420px] rounded-[2.5rem] overflow-hidden group cursor-pointer shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-200" onclick="showInfo('Marketing')">
                     <img src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&q=80&w=1200" alt="Audiovisual" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#002845] via-[#002845]/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
-                    
                     <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end z-10 transition-transform duration-500 group-hover:-translate-y-2">
                         <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-2xl mb-6 shadow-lg transition-colors duration-500 group-hover:bg-indigo-500">
                             <i class="fas fa-video"></i>
                         </div>
                         <h4 class="font-black text-3xl text-white mb-3">Audiovisual 4K</h4>
-                        <p class="text-sm text-gray-200 leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-500 mb-6">
-                            Eleva la autoridad de tu marca con contenido cinematográfico y estrategia de marketing multiplataforma por solo $80 USD.
-                        </p>
+                        <p class="text-sm text-gray-200 leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-500 mb-6">Producción cinematográfica 4K y marketing digital para elevar la autoridad y reputación de su marca en redes.</p>
                         <div class="w-12 h-1 bg-indigo-500 mb-4 transition-all duration-700 group-hover:w-full group-hover:bg-brandGold"></div>
-                        <span class="text-[10px] font-bold text-white uppercase tracking-widest flex items-center gap-2 group-hover:text-brandGold transition-colors">
-                            Ver Paquete 4K <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
-                        </span>
+                        <span class="text-[10px] font-bold text-white uppercase tracking-widest flex items-center gap-2 group-hover:text-brandGold transition-colors">Ver Detalles <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i></span>
                     </div>
                 </div>
 
@@ -553,23 +524,19 @@
     </div>
 
     <!-- FOOTER -->
-    <footer id="contacto" class="bg-brandDark text-white pt-12 pb-8 mt-auto border-t border-brandTeal/30 relative z-30 animate-entrance delay-200">
+    <footer id="contacto" class="bg-brandDark text-white pt-14 pb-10 mt-auto border-t border-brandTeal/30 relative z-30 animate-entrance delay-300">
         <div class="container mx-auto px-6 max-w-7xl relative z-20">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-start text-center md:text-left">
                 
-                <!-- SECCIÓN LOGOS (ACTUALIZADA) -->
+                <!-- SECCIÓN LOGOS -->
                 <div class="flex flex-col items-center md:items-start">
                     <div class="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4 mb-6">
-                        <!-- Logo Original -->
                         <img src="https://raw.githubusercontent.com/direccioncomercial/evoluser-web/1b862973e8003850daadd6a47bffd5b6cf04b2f6/logo.png" alt="Logo EvoluSer" class="h-10 w-auto brightness-0 invert cursor-pointer hover:scale-105 transition-transform" onclick="navigate('home')">
-                        
-                        <!-- Separador -->
                         <div class="h-px w-12 md:w-px md:h-10 bg-white/20"></div>
-                        
-                        <!-- Nuevo Logo Comercial -->
                         <img src="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/logo_evoluser_comercial-sin%20fondo1.png" alt="Logo EvoluSer Comercial" class="h-10 md:h-12 w-auto brightness-0 invert cursor-pointer hover:scale-105 transition-transform object-contain" onclick="navigate('home')">
                     </div>
-                    <p class="text-gray-400 text-[11px] max-w-xs mx-auto md:mx-0 leading-relaxed">Consultoría experta en gestión de riesgos, seguros, estrategia comercial y posicionamiento audiovisual en Ecuador.</p>
+                    <!-- MEJORA TEXTUAL AQUÍ TAMBIÉN -->
+                    <p class="text-gray-400 text-[11px] max-w-xs mx-auto md:mx-0 leading-relaxed">Blindamos su patrimonio y proyectamos la autoridad de su marca mediante un ecosistema integral de gestión de riesgos, estrategia comercial y producción audiovisual de vanguardia en Ecuador.</p>
                 </div>
                 
                 <div class="text-center">
@@ -586,9 +553,10 @@
                 <div class="md:text-right">
                      <h5 class="font-bold text-[9px] uppercase tracking-[0.2em] text-brandTeal mb-5">Contáctanos</h5>
                      <div class="space-y-3 text-xs text-gray-300">
-                        <a href="tel:+593996408009" class="block hover:text-white transition-colors">+593 99 640 8009 <i class="fas fa-phone ml-2 text-brandTeal"></i></a>
-                        <a href="https://wa.me/593983900050" class="block hover:text-white transition-colors">+593 98 390 0050 <i class="fab fa-whatsapp ml-2 text-brandTeal"></i></a>
-                        <a href="mailto:evoluserec@gmail.com" class="block hover:text-white transition-colors">evoluserec@gmail.com <i class="fas fa-envelope ml-2 text-brandTeal"></i></a>
+                        <a href="https://wa.me/593984104342" target="_blank" class="block hover:text-white transition-colors">+593 98 410 4342 (Comercial) <i class="fab fa-whatsapp ml-2 text-brandTeal"></i></a>
+                        <a href="https://wa.me/593996408009" target="_blank" class="block hover:text-white transition-colors">+593 99 640 8009 (Estrategia) <i class="fab fa-whatsapp ml-2 text-brandTeal"></i></a>
+                        <a href="https://wa.me/593983900050" target="_blank" class="block hover:text-white transition-colors">+593 98 390 0050 (Audiovisual) <i class="fab fa-whatsapp ml-2 text-brandTeal"></i></a>
+                        <a href="mailto:evoluserec@gmail.com" class="block hover:text-white transition-colors pt-2">evoluserec@gmail.com <i class="fas fa-envelope ml-2 text-brandTeal"></i></a>
                      </div>
                 </div>
             </div>
@@ -625,109 +593,46 @@
         </div>
     </div>
 
-    <!-- CONTENEDOR VACÍO DEL MODAL PARA INYECCIÓN VÍA JS (PREVIENE BUGS) -->
     <div id="info-modal"></div>
 
     <script>
-        // --- DATA ACTUALIZADA ---
+        // --- DATA DE SERVICIOS ---
         const serviceData = {
             'Vehículos': { 
                 title: 'Movilidad Segura Integral', 
                 icon: '<i class="fas fa-car text-brandTeal"></i>',
                 image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=1200',
-                content: `
-                    <div class="text-left space-y-4">
-                        <p class="text-lg">Protegemos tu patrimonio en movimiento con las pólizas más robustas y eficientes del mercado automotriz.</p>
-                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
-                            <ul class="space-y-4">
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandTeal text-xl mt-0.5"></i> <span><strong>Cobertura Total:</strong> Protección financiera contra choques, daños a terceros, robo total o parcial del vehículo.</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandTeal text-xl mt-0.5"></i> <span><strong>Asistencia VIP 24/7:</strong> Servicio de grúa ininterrumpido, auxilio mecánico en vía, cerrajería y provisión de auto sustituto.</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandTeal text-xl mt-0.5"></i> <span><strong>Flotas Empresariales:</strong> Análisis de riesgo personalizado, tarifas preferenciales para empresas y gestión centralizada de siniestros.</span></li>
-                            </ul>
-                        </div>
-                    </div>`
+                content: `<div class="text-left space-y-4"><p class="text-lg">Protegemos tu patrimonio en movimiento con las pólizas más robustas y eficientes del mercado automotriz.</p><div class="bg-slate-50 p-6 rounded-xl border border-slate-100"><ul class="space-y-4"><li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandTeal text-xl mt-0.5"></i> <span><strong>Cobertura Total:</strong> Protección financiera contra choques, daños a terceros, robo total o parcial del vehículo.</span></li><li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandTeal text-xl mt-0.5"></i> <span><strong>Asistencia VIP 24/7:</strong> Servicio de grúa ininterrumpido, auxilio mecánico en vía, cerrajería y provisión de auto sustituto.</span></li><li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandTeal text-xl mt-0.5"></i> <span><strong>Flotas Empresariales:</strong> Análisis de riesgo personalizado, tarifas preferenciales para empresas y gestión centralizada de siniestros.</span></li></ul></div></div>`
             },
             'Salud': { 
                 title: 'Bienestar y Salud Corporativa', 
                 icon: '<i class="fas fa-heartbeat text-pink-500"></i>',
-                image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=1200', 
-                content: `
-                    <div class="text-left space-y-4">
-                        <p class="text-lg">El bienestar de tu familia y equipo es nuestra máxima prioridad. Diseñamos planes médicos y de vida a tu medida.</p>
-                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
-                            <ul class="space-y-4">
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-pink-500 text-xl mt-0.5"></i> <span><strong>Medicina Prepagada:</strong> Acceso garantizado a la mejor red de hospitales y clínicas de excelencia a nivel nacional e internacional.</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-pink-500 text-xl mt-0.5"></i> <span><strong>Seguros de Vida:</strong> Protección financiera sólida e irrevocable para tus seres queridos ante cualquier eventualidad.</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-pink-500 text-xl mt-0.5"></i> <span><strong>Beneficios Adicionales:</strong> Cobertura dental completa, atención de maternidad, servicios de telemedicina y provisión de medicinas continuas.</span></li>
-                            </ul>
-                        </div>
-                    </div>`
+                image: 'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&q=80&w=1200', 
+                content: `<div class="text-left space-y-4"><p class="text-lg">El bienestar de tu familia y equipo es nuestra máxima prioridad. Diseñamos planes médicos y de vida a tu medida.</p><div class="bg-slate-50 p-6 rounded-xl border border-slate-100"><ul class="space-y-4"><li class="flex items-start gap-3"><i class="fas fa-check-circle text-pink-500 text-xl mt-0.5"></i> <span><strong>Medicina Prepagada:</strong> Acceso garantizado a la mejor red de hospitales y clínicas de excelencia a nivel nacional e internacional.</span></li><li class="flex items-start gap-3"><i class="fas fa-check-circle text-pink-500 text-xl mt-0.5"></i> <span><strong>Seguros de Vida:</strong> Protección financiera sólida e irrevocable para tus seres queridos ante cualquier eventualidad.</span></li><li class="flex items-start gap-3"><i class="fas fa-check-circle text-pink-500 text-xl mt-0.5"></i> <span><strong>Beneficios Adicionales:</strong> Cobertura dental completa, atención de maternidad, servicios de telemedicina y provisión de medicinas continuas.</span></li></ul></div></div>`
             },
             'Seguros': { 
                 title: 'Seguros Integrales & Activos', 
                 icon: '<i class="fas fa-shield-alt text-brandGold"></i>',
                 image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1200',
-                content: `
-                    <div class="text-left space-y-4">
-                        <p class="text-lg">Blindamos la infraestructura y las operaciones de tu empresa contra imprevistos catastróficos que puedan detener tu negocio.</p>
-                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
-                            <ul class="space-y-4">
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandGold text-xl mt-0.5"></i> <span><strong>Multiriesgo Industrial:</strong> Cobertura exhaustiva contra incendios, terremotos, inundaciones y daños severos por agua.</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandGold text-xl mt-0.5"></i> <span><strong>Responsabilidad Civil:</strong> Protección jurídica y financiera ante daños a terceros ocasionados en el ejercicio de tu actividad comercial.</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandGold text-xl mt-0.5"></i> <span><strong>Lucro Cesante:</strong> Garantizamos el flujo de tus ingresos fijos si tu operación se detiene temporalmente a causa de un siniestro cubierto.</span></li>
-                            </ul>
-                        </div>
-                    </div>`
+                content: `<div class="text-left space-y-4"><p class="text-lg">Blindamos la infraestructura y las operaciones de tu empresa contra imprevistos catastróficos que puedan detener tu negocio.</p><div class="bg-slate-50 p-6 rounded-xl border border-slate-100"><ul class="space-y-4"><li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandGold text-xl mt-0.5"></i> <span><strong>Multiriesgo Industrial:</strong> Cobertura exhaustiva contra incendios, terremotos, inundaciones y daños severos por agua.</span></li><li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandGold text-xl mt-0.5"></i> <span><strong>Responsabilidad Civil:</strong> Protección jurídica y financiera ante daños a terceros ocasionados en el ejercicio de tu actividad comercial.</span></li><li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandGold text-xl mt-0.5"></i> <span><strong>Lucro Cesante:</strong> Garantizamos el flujo de tus ingresos fijos si tu operación se detiene temporalmente a causa de un siniestro cubierto.</span></li></ul></div></div>`
             },
             'Internet': { 
                 title: 'Conectividad Total Corporativa', 
                 icon: '<i class="fas fa-wifi text-blue-500"></i>',
                 image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1200', 
-                content: `
-                    <div class="text-left space-y-4">
-                        <p class="text-lg">Ofrecemos soluciones de comunicación de alta disponibilidad y tecnología punta para mantener tu negocio siempre en línea con el mundo.</p>
-                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
-                            <ul class="space-y-4">
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-blue-500 text-xl mt-0.5"></i> <span><strong>Enlaces Dedicados:</strong> Internet de fibra óptica 100% simétrico y exclusivo, garantizando estabilidad para tu empresa.</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-blue-500 text-xl mt-0.5"></i> <span><strong>Telefonía Móvil:</strong> Gestión de planes corporativos y flotas de celulares con minutos y paquetes de datos ilimitados.</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-blue-500 text-xl mt-0.5"></i> <span><strong>Internet Hogar:</strong> Las mejores y más competitivas tarifas de ultra velocidad para pequeñas Pymes y domicilios particulares.</span></li>
-                            </ul>
-                        </div>
-                    </div>`
+                content: `<div class="text-left space-y-4"><p class="text-lg">Ofrecemos soluciones de comunicación de alta disponibilidad y tecnología punta para mantener tu negocio siempre en línea con el mundo.</p><div class="bg-slate-50 p-6 rounded-xl border border-slate-100"><ul class="space-y-4"><li class="flex items-start gap-3"><i class="fas fa-check-circle text-blue-500 text-xl mt-0.5"></i> <span><strong>Enlaces Dedicados:</strong> Internet de fibra óptica 100% simétrico y exclusivo, garantizando estabilidad para tu empresa.</span></li><li class="flex items-start gap-3"><i class="fas fa-check-circle text-blue-500 text-xl mt-0.5"></i> <span><strong>Telefonía Móvil:</strong> Gestión de planes corporativos y flotas de celulares con minutos y paquetes de datos ilimitados.</span></li><li class="flex items-start gap-3"><i class="fas fa-check-circle text-blue-500 text-xl mt-0.5"></i> <span><strong>Internet Hogar:</strong> Las mejores y más competitivas tarifas de ultra velocidad para pequeñas Pymes y domicilios particulares.</span></li></ul></div></div>`
             },
             'Comercial': { 
                 title: 'Consultoría Comercial Pymes', 
                 icon: '<i class="fas fa-briefcase text-brandDark"></i>',
                 image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1200',
-                content: `
-                    <div class="text-left space-y-4">
-                        <p class="text-lg">Transformamos la visión de tu negocio en una estructura rentable, completamente formal y lista para escalar.</p>
-                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
-                            <ul class="space-y-4">
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandDark text-xl mt-0.5"></i> <span><strong>Estrategia de Ventas:</strong> Diseño técnico de embudos comerciales y capacitación intensiva de equipos de ventas.</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandDark text-xl mt-0.5"></i> <span><strong>Formalización Empresarial:</strong> Asesoría experta en la creación de empresas, estructuración societaria y cumplimiento normativo.</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandDark text-xl mt-0.5"></i> <span><strong>Optimización:</strong> Análisis profundo de rentabilidad, estrategias de reducción de costos y estructuración de procesos eficientes.</span></li>
-                            </ul>
-                        </div>
-                    </div>`
+                content: `<div class="text-left space-y-4"><p class="text-lg">Transformamos la visión de tu negocio en una estructura rentable, completamente formal y lista para escalar.</p><div class="bg-slate-50 p-6 rounded-xl border border-slate-100"><ul class="space-y-4"><li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandDark text-xl mt-0.5"></i> <span><strong>Estrategia de Ventas:</strong> Diseño técnico de embudos comerciales y capacitación intensiva de equipos de ventas.</span></li><li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandDark text-xl mt-0.5"></i> <span><strong>Formalización Empresarial:</strong> Asesoría experta en la creación de empresas, estructuración societaria y cumplimiento normativo.</span></li><li class="flex items-start gap-3"><i class="fas fa-check-circle text-brandDark text-xl mt-0.5"></i> <span><strong>Optimización:</strong> Análisis profundo de rentabilidad, estrategias de reducción de costos y estructuración de procesos eficientes.</span></li></ul></div></div>`
             },
             'Marketing': { 
                 title: 'Producción Audiovisual 4K', 
                 icon: '<i class="fas fa-video text-indigo-600"></i>',
                 image: 'https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&q=80&w=1200',
-                content: `
-                    <div class="text-left space-y-4">
-                        <p class="text-lg">Eleve la autoridad de su marca con contenido cinematográfico y una estrategia de marketing multiplataforma de primer nivel por solo <strong class="text-indigo-600 text-xl">$80 USD</strong>.</p>
-                        <div class="bg-indigo-50/50 p-6 rounded-xl border border-indigo-100">
-                            <h4 class="font-bold text-brandDark mb-4 uppercase tracking-wider text-sm">¿Qué incluye el paquete?</h4>
-                            <ul class="space-y-4">
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-indigo-600 text-xl mt-0.5"></i> <span><strong>Calidad Premium 4K:</strong> Grabación in-situ con iluminación profesional y formato logarítmico (ProRes) para una colorización cinematográfica impecable.</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-indigo-600 text-xl mt-0.5"></i> <span><strong>Servicio Integral (4 en 1):</strong> Nos encargamos de todo: elaboración del guion institucional, grabación, edición con ritmo dinámico y subtítulos animados.</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-indigo-600 text-xl mt-0.5"></i> <span><strong>Publicación Estratégica:</strong> Gestión de posteo coordinado en TikTok, Instagram y Facebook con Copy optimizado y un análisis de Hashtags ganadores.</span></li>
-                                <li class="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-brandGold/30"><i class="fas fa-gift text-brandGold text-2xl"></i> <span class="text-brandDark font-bold">BONO EXCLUSIVO: Reciba el diseño gráfico profesional de un (1) Post promocional adicional para potenciar sus redes.</span></li>
-                            </ul>
-                        </div>
-                    </div>`
+                content: `<div class="text-left space-y-4"><p class="text-lg">Eleve la autoridad de su marca con contenido cinematográfico y una estrategia de marketing multiplataforma por solo <strong class="text-indigo-600 text-xl">$80 USD</strong>.</p><div class="bg-indigo-50/50 p-6 rounded-xl border border-indigo-100"><h4 class="font-bold text-brandDark mb-4 uppercase tracking-wider text-sm">¿Qué incluye el paquete?</h4><ul class="space-y-4"><li class="flex items-start gap-3"><i class="fas fa-check-circle text-indigo-600 text-xl mt-0.5"></i> <span><strong>Calidad Premium 4K:</strong> Grabación in-situ con iluminación profesional y formato logarítmico (ProRes) para una colorización cinematográfica impecable.</span></li><li class="flex items-start gap-3"><i class="fas fa-check-circle text-indigo-600 text-xl mt-0.5"></i> <span><strong>Servicio Integral (4 en 1):</strong> Guion institucional, grabación, edición dinámica y subtítulos animados.</span></li><li class="flex items-start gap-3"><i class="fas fa-check-circle text-indigo-600 text-xl mt-0.5"></i> <span><strong>Publicación Estratégica:</strong> Gestión de posteo coordinado en TikTok, Instagram y Facebook con Copy y Hashtags optimizados.</span></li><li class="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-brandGold/30"><i class="fas fa-gift text-brandGold text-2xl"></i> <span class="text-brandDark font-bold">BONO EXCLUSIVO: Reciba el diseño gráfico profesional de un (1) Post promocional adicional.</span></li></ul></div></div>`
             }
         };
 
@@ -736,43 +641,36 @@
                 name: 'Dolores Eugenia Ortega Rogel',
                 title: 'Socio Directora Comercial & Seguros',
                 image: 'https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/%C3%B1a%C3%B1ita%20evoluser.png',
-                position: 'object-top',
-                content: 'Con una amplia trayectoria en el sector asegurador, Dolores lidera la estrategia comercial de EvoluSer. Su enfoque se centra en diseñar ecosistemas de protección patrimonial a medida, garantizando que cada cliente corporativo o individual reciba un servicio VIP, cercano y estructurado para asegurar la total tranquilidad de su patrimonio y operaciones comerciales.'
+                content: 'Con una amplia trayectoria en el sector asegurador, Dolores lidera la estrategia comercial de EvoluSer. Su enfoque se centra en diseñar ecosistemas de protección patrimonial a medida, garantizando que cada cliente reciba un servicio VIP y estructurado para asegurar la total tranquilidad de su patrimonio.',
+                phone: '593984104342'
             },
             'Christian': {
                 name: 'Christian Roberth Ortega Rogel',
                 title: 'Socio Director Técnico & Estrategia',
                 image: 'https://raw.githubusercontent.com/direccioncomercial/evoluser-web/1b862973e8003850daadd6a47bffd5b6cf04b2f6/imagen3.png',
-                position: 'object-center',
-                content: 'Experto en ingeniería de riesgos y consultoría de negocios. Christian aporta el rigor analítico y la visión estratégica necesaria para transformar y blindar la estructura de las Pymes. Es un especialista nato en la optimización de procesos, cumplimiento normativo y el diseño de sofisticados planes de contingencia técnica.'
+                content: 'Experto en ingeniería de riesgos y consultoría de negocios. Christian aporta el rigor analítico necesario para transformar y blindar la estructura de las Pymes. Especialista en la optimización de procesos y cumplimiento normativo integral.',
+                phone: '593996408009'
             },
             'Nury': {
                 name: 'Nury Echeverría',
                 title: 'Socio Directora Producción & Mktg 4K',
                 image: 'https://raw.githubusercontent.com/direccioncomercial/evoluser-web/main/imagen2.png',
-                position: 'object-top',
-                content: 'Especialista de alto nivel en comunicación visual y marketing digital. Nury dirige magistralmente el departamento audiovisual de EvoluSer, transformando la identidad de las marcas a través de producciones 4K de impacto cinematográfico. Su visión creativa y estrategias de posicionamiento multiplataforma elevan la autoridad digital de todos nuestros clientes.'
+                content: 'Especialista de alto nivel en comunicación visual. Nury dirige el departamento audiovisual, transformando la identidad de las marcas a través de producciones 4K de impacto cinematográfico y estrategias de posicionamiento multiplataforma.',
+                phone: '593983900050'
             }
         };
 
-        // --- SISTEMA SPA (Navegación entre vistas sin recargar) ---
+        // --- SISTEMA SPA ---
         function navigate(page) {
             const home = document.getElementById('page-home');
             const sol = document.getElementById('page-soluciones');
-            
             if(page === 'soluciones') {
-                home.classList.add('hidden');
-                home.classList.remove('animate-entrance');
-                sol.classList.remove('hidden');
-                void sol.offsetWidth;
-                sol.classList.add('animate-entrance');
+                home.classList.add('hidden'); home.classList.remove('animate-entrance');
+                sol.classList.remove('hidden'); void sol.offsetWidth; sol.classList.add('animate-entrance');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
-                sol.classList.add('hidden');
-                sol.classList.remove('animate-entrance');
-                home.classList.remove('hidden');
-                void home.offsetWidth;
-                home.classList.add('animate-entrance');
+                sol.classList.add('hidden'); sol.classList.remove('animate-entrance');
+                home.classList.remove('hidden'); void home.offsetWidth; home.classList.add('animate-entrance');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
@@ -788,158 +686,44 @@
             }, 50);
         }
 
-        // --- FUNCIONES DEL MODAL ---
+        // --- MODALES ---
         function showInfo(service) {
             const data = serviceData[service] || serviceData['Seguros'];
             const modalContainer = document.getElementById('info-modal');
-            
-            modalContainer.innerHTML = `
-            <div class="fixed inset-0 z-[3000] flex items-center justify-center p-4 sm:p-6 bg-brandDark/80 backdrop-blur-md opacity-100 transition-opacity duration-300">
-                <div class="bg-white w-full max-w-4xl h-[90vh] md:h-auto md:max-h-[90vh] rounded-[2rem] shadow-2xl flex flex-col relative overflow-hidden animate-fade-in">
-                    
-                    <button onclick="closeInfo()" class="absolute top-4 right-4 z-50 bg-black/40 backdrop-blur-md text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-brandGold transition-colors shadow-lg"><i class="fas fa-times text-lg"></i></button>
-                    
-                    <div class="w-full h-full overflow-y-auto flex flex-col scrollbar-hide">
-                        <div class="h-56 md:h-72 w-full bg-cover bg-center relative flex-shrink-0" style="background-image: url('${data.image}');">
-                            <div class="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div>
-                            <div class="absolute -bottom-8 left-8 flex items-end gap-4 z-20">
-                                <div class="w-16 h-16 md:w-20 md:h-20 bg-white rounded-2xl flex items-center justify-center text-3xl md:text-4xl shadow-xl border border-slate-100">${data.icon}</div>
-                            </div>
-                        </div>
-
-                        <div class="px-8 md:px-12 pb-10 pt-14 flex-1 flex flex-col bg-white">
-                            <h3 class="text-2xl md:text-3xl font-black text-brandDark mb-4">${data.title}</h3>
-                            <div class="text-gray-600 text-sm md:text-base leading-relaxed mb-8 flex-1">${data.content}</div>
-                            
-                            <button onclick="cotizarActual()" class="w-full bg-brandDark text-white py-4 rounded-xl font-bold hover:bg-brandTeal transition-all duration-300 flex items-center justify-center gap-3 shadow-xl mt-auto transform hover:-translate-y-1">
-                                <i class="fab fa-whatsapp text-2xl"></i> Solicitar Asesoría Especializada
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>`;
+            modalContainer.innerHTML = `<div class="fixed inset-0 z-[3000] flex items-center justify-center p-4 sm:p-6 bg-brandDark/80 backdrop-blur-md opacity-100 transition-opacity duration-300"><div class="bg-white w-full max-w-4xl h-[90vh] md:h-auto md:max-h-[90vh] rounded-[2rem] shadow-2xl flex flex-col relative overflow-hidden animate-fade-in"><button onclick="closeInfo()" class="absolute top-4 right-4 z-50 bg-black/40 backdrop-blur-md text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-brandGold transition-colors shadow-lg"><i class="fas fa-times text-lg"></i></button><div class="w-full h-full overflow-y-auto flex flex-col scrollbar-hide"><div class="h-56 md:h-72 w-full bg-cover bg-center relative flex-shrink-0" style="background-image: url('${data.image}');"><div class="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div><div class="absolute -bottom-8 left-8 flex items-end gap-4 z-20"><div class="w-16 h-16 md:w-20 md:h-20 bg-white rounded-2xl flex items-center justify-center text-3xl md:text-4xl shadow-xl border border-slate-100">${data.icon}</div></div></div><div class="px-8 md:px-12 pb-10 pt-14 flex-1 flex flex-col bg-white"><h3 class="text-2xl md:text-3xl font-black text-brandDark mb-4">${data.title}</h3><div class="text-gray-600 text-sm md:text-base leading-relaxed mb-8 flex-1">${data.content}</div><button onclick="cotizarActual()" class="w-full bg-brandDark text-white py-4 rounded-xl font-bold hover:bg-brandTeal transition-all duration-300 flex items-center justify-center gap-3 shadow-xl mt-auto transform hover:-translate-y-1"><i class="fab fa-whatsapp text-2xl"></i> Solicitar Asesoría Especializada</button></div></div></div></div>`;
             document.body.style.overflow = 'hidden';
         }
 
         function showDirector(id) {
             const data = directorData[id];
             const modalContainer = document.getElementById('info-modal');
-            
-            modalContainer.innerHTML = `
-            <div class="fixed inset-0 z-[3000] flex items-center justify-center p-4 sm:p-6 bg-brandDark/80 backdrop-blur-md opacity-100 transition-opacity duration-300">
-                <div class="bg-white w-full max-w-3xl h-[90vh] md:h-auto md:max-h-[90vh] rounded-[2rem] shadow-2xl flex flex-col relative overflow-hidden animate-fade-in">
-                    
-                    <button onclick="closeInfo()" class="absolute top-4 right-4 z-50 bg-black/40 backdrop-blur-md text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-brandGold transition-colors shadow-lg"><i class="fas fa-times text-lg"></i></button>
-                    
-                    <div class="w-full h-full overflow-y-auto flex flex-col scrollbar-hide">
-                        <div class="h-40 md:h-48 w-full bg-gradient-to-r from-brandDark to-brandTeal relative flex-shrink-0"></div>
-
-                        <div class="px-6 md:px-12 pb-10 flex-1 flex flex-col bg-white">
-                            <div class="flex flex-col items-center text-center -mt-20 md:-mt-24 mb-4 relative z-20">
-                                <div class="w-40 h-40 md:w-48 md:h-48 rounded-[2rem] border-[6px] border-white shadow-2xl overflow-hidden bg-white">
-                                    <img src="${data.image}" alt="${data.name}" class="w-full h-full object-cover ${data.position}">
-                                </div>
-                                <div class="mt-6">
-                                    <h3 class="text-2xl md:text-3xl font-black text-brandDark">${data.name}</h3>
-                                    <p class="text-brandTeal font-bold uppercase tracking-widest text-xs md:text-sm mt-2">${data.title}</p>
-                                    <div class="h-1 w-16 bg-brandGold mx-auto mt-4 rounded-full"></div>
-                                </div>
-                                <p class="text-gray-600 text-sm md:text-base leading-relaxed max-w-2xl mx-auto mt-6 px-2 md:px-4">${data.content}</p>
-                            </div>
-                            
-                            <button onclick="openWhatsapp()" class="w-full bg-brandDark text-white py-4 rounded-xl font-bold hover:bg-brandTeal transition-all duration-300 flex items-center justify-center gap-3 shadow-xl transform hover:-translate-y-1 mt-auto">
-                                <i class="fab fa-whatsapp text-2xl"></i> Contactar a Dirección
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>`;
+            modalContainer.innerHTML = `<div class="fixed inset-0 z-[3000] flex items-center justify-center p-4 sm:p-6 bg-brandDark/80 backdrop-blur-md opacity-100 transition-opacity duration-300"><div class="bg-white w-full max-w-3xl h-[90vh] md:h-auto md:max-h-[90vh] rounded-[2rem] shadow-2xl flex flex-col relative overflow-hidden animate-fade-in"><button onclick="closeInfo()" class="absolute top-4 right-4 z-50 bg-black/40 backdrop-blur-md text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-brandGold transition-colors shadow-lg"><i class="fas fa-times text-lg"></i></button><div class="w-full h-full overflow-y-auto flex flex-col scrollbar-hide"><div class="h-40 md:h-48 w-full bg-gradient-to-r from-brandDark to-brandTeal relative flex-shrink-0"></div><div class="px-6 md:px-12 pb-10 flex-1 flex flex-col bg-white"><div class="flex flex-col items-center text-center -mt-20 md:-mt-24 mb-4 relative z-20"><div class="w-40 h-40 md:w-48 md:h-48 rounded-full border-[6px] border-white shadow-2xl overflow-hidden bg-white"><img src="${data.image}" alt="${data.name}" class="w-full h-full object-cover ${data.position}"></div><div class="mt-6"><h3 class="text-2xl md:text-3xl font-black text-brandDark">${data.name}</h3><p class="text-brandTeal font-bold uppercase tracking-widest text-xs md:text-sm mt-2">${data.title}</p><div class="h-1 w-16 bg-brandGold mx-auto mt-4 rounded-full"></div></div><p class="text-gray-600 text-sm md:text-base leading-relaxed max-w-2xl mx-auto mt-6 px-2 md:px-4 text-justify">${data.content}</p></div><button onclick="window.open('https://wa.me/${data.phone}', '_blank')" class="w-full bg-brandDark text-white py-4 rounded-xl font-bold hover:bg-brandTeal transition-all duration-300 flex items-center justify-center gap-3 shadow-xl transform hover:-translate-y-1 mt-auto"><i class="fab fa-whatsapp text-2xl"></i> Contactar ahora</button></div></div></div></div>`;
             document.body.style.overflow = 'hidden';
         }
         
-        function closeInfo() { 
-            document.body.style.overflow = 'auto'; 
-            document.getElementById('info-modal').innerHTML = ''; 
-        }
+        function closeInfo() { document.body.style.overflow = 'auto'; document.getElementById('info-modal').innerHTML = ''; }
 
-        // --- FUNCIONES MENÚ Y CARRUSEL ---
+        // --- NAVEGACIÓN ---
         function toggleMenu() {
-            const menu = document.getElementById('side-menu');
-            const backdrop = document.getElementById('backdrop');
+            const menu = document.getElementById('side-menu'); const backdrop = document.getElementById('backdrop');
             if (menu.classList.contains('drawer-open')) {
-                menu.classList.remove('drawer-open');
-                backdrop.classList.remove('opacity-100');
-                setTimeout(() => backdrop.classList.add('hidden'), 300);
+                menu.classList.remove('drawer-open'); backdrop.classList.remove('opacity-100'); setTimeout(() => backdrop.classList.add('hidden'), 300);
             } else {
-                backdrop.classList.remove('hidden');
-                void backdrop.offsetWidth; 
-                backdrop.classList.add('opacity-100');
-                menu.classList.add('drawer-open');
+                backdrop.classList.remove('hidden'); void backdrop.offsetWidth; backdrop.classList.add('opacity-100'); menu.classList.add('drawer-open');
             }
         }
 
-        const slides = document.querySelectorAll('.slide');
-        const textItems = document.querySelectorAll('.hero-text-item');
-        let currentSlide = 0;
-
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active'); textItems[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active'); textItems[currentSlide].classList.add('active');
-        }
-
-        function prevSlide() {
-            slides[currentSlide].classList.remove('active'); textItems[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active'); textItems[currentSlide].classList.add('active');
-        }
-
+        const slides = document.querySelectorAll('.slide'); const textItems = document.querySelectorAll('.hero-text-item'); let currentSlide = 0;
+        function nextSlide() { slides[currentSlide].classList.remove('active'); textItems[currentSlide].classList.remove('active'); currentSlide = (currentSlide + 1) % slides.length; slides[currentSlide].classList.add('active'); textItems[currentSlide].classList.add('active'); }
+        function prevSlide() { slides[currentSlide].classList.remove('active'); textItems[currentSlide].classList.remove('active'); currentSlide = (currentSlide - 1 + slides.length) % slides.length; slides[currentSlide].classList.add('active'); textItems[currentSlide].classList.add('active'); }
         setInterval(nextSlide, 8000);
 
-        function toggleChat() {
-            const chatWin = document.getElementById('chat-window');
-            if(chatWin.classList.contains('hidden')){
-                chatWin.classList.remove('hidden');
-                chatWin.classList.add('flex');
-            } else {
-                chatWin.classList.add('hidden');
-                chatWin.classList.remove('flex');
-            }
-        }
-
-        function handleChat() {
-            const input = document.getElementById('chat-input');
-            const msg = input.value.trim();
-            if (!msg) return;
-            addMsg(msg, 'user'); input.value = '';
-            setTimeout(() => {
-                const resp = getAIResponse(msg);
-                addMsg(resp, 'bot');
-            }, 700);
-        }
-
-        function addMsg(text, sender) {
-            const div = document.createElement('div');
-            const alignClass = sender === 'user' ? 'self-end bg-brandTeal text-white' : 'self-start bg-white text-slate-700';
-            const radiusClass = sender === 'user' ? 'rounded-tr-none' : 'rounded-tl-none';
-            div.className = `max-w-[85%] p-3 rounded-2xl text-sm leading-relaxed shadow-sm border border-slate-100 ${alignClass} ${radiusClass}`;
-            div.innerHTML = text;
-            const msgs = document.getElementById('chat-messages');
-            msgs.appendChild(div); msgs.scrollTop = msgs.scrollHeight;
-        }
-
-        function getAIResponse(query) {
-            const q = query.toLowerCase();
-            if (q.includes('hola')) return '¡Hola! Bienvenido a EvoluSer. 🤖 ¿Desea conocer sobre nuestros seguros, conectividad o servicios de marketing audiovisual?';
-            if (q.includes('auto')) return 'Ofrecemos seguros vehiculares con cobertura total y asistencia 24/7. 🚗 ¿Le gustaría cotizar?';
-            if (q.includes('internet')) return 'Contamos con planes de internet de alta velocidad para hogares y empresas. 📶 ¿En qué ciudad se encuentra?';
-            if (q.includes('video') || q.includes('marketing') || q.includes('redes') || q.includes('4k') || q.includes('audiovisual')) return '¡Excelente elección! 🎬 Nuestro paquete Audiovisual 4K cuesta solo $80 USD. Incluye grabación profesional in-situ, edición cinematográfica, guion, publicación en redes sociales y un post adicional de regalo. Dirigido por nuestra especialista Nury Echeverría. ¿Te gustaría agendar una grabación?';
-            return 'Entiendo. Para brindarle una asesoría técnica profesional, le sugiero conversar directamente con nuestros directores vía WhatsApp: <br><a href="https://wa.me/593983900050" target="_blank" class="text-brandTeal font-bold underline">Chatear ahora</a>';
-        }
-
+        function toggleChat() { const chatWin = document.getElementById('chat-window'); if(chatWin.classList.contains('hidden')){ chatWin.classList.remove('hidden'); chatWin.classList.add('flex'); } else { chatWin.classList.add('hidden'); chatWin.classList.remove('flex'); } }
+        function handleChat() { const input = document.getElementById('chat-input'); const msg = input.value.trim(); if (!msg) return; addMsg(msg, 'user'); input.value = ''; setTimeout(() => { const resp = getAIResponse(msg); addMsg(resp, 'bot'); }, 700); }
+        function addMsg(text, sender) { const div = document.createElement('div'); const alignClass = sender === 'user' ? 'self-end bg-brandTeal text-white' : 'self-start bg-white text-slate-700'; const radiusClass = sender === 'user' ? 'rounded-tr-none' : 'rounded-tl-none'; div.className = `max-w-[85%] p-3 rounded-2xl text-sm leading-relaxed shadow-sm border border-slate-100 ${alignClass} ${radiusClass}`; div.innerHTML = text; const msgs = document.getElementById('chat-messages'); msgs.appendChild(div); msgs.scrollTop = msgs.scrollHeight; }
+        function getAIResponse(query) { const q = query.toLowerCase(); if (q.includes('hola')) return '¡Hola! Bienvenido a EvoluSer. 🤖 ¿Desea conocer sobre nuestros seguros, conectividad o servicios de marketing audiovisual?'; if (q.includes('auto')) return 'Ofrecemos seguros vehiculares con cobertura total. 🚗 ¿Le gustaría cotizar?'; if (q.includes('internet')) return 'Contamos con planes de internet de alta velocidad corporativos. 📶 ¿En qué ciudad se encuentra?'; if (q.includes('video') || q.includes('marketing')) return '¡Nuestro paquete Audiovisual 4K cuesta solo $80 USD. ¿Te gustaría agendar una grabación?'; return 'Para una asesoría técnica profesional, le sugiero conversar directamente con nuestros directores vía WhatsApp.'; }
         function cotizarActual() { window.open('https://wa.me/593983900050', '_blank'); }
         function openWhatsapp() { window.open('https://wa.me/593983900050', '_blank'); }
-
         if (typeof VanillaTilt !== 'undefined') { VanillaTilt.init(document.querySelectorAll(".glass-card"), { max: 5, speed: 400 }); }
     </script>
 </body>

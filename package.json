@@ -1,0 +1,31 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/direccioncomercial/evocomercial.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/direccioncomercial/evocomercial/issues"
+  },
+  "homepage": "https://github.com/direccioncomercial/evocomercial#readme",
+  "devDependencies": {
+    "@babel/core": "^8.0.1",
+    "@babel/preset-env": "^8.0.2",
+    "babel-jest": "^30.4.1",
+    "jest": "^30.4.2",
+    "jsdom": "^22.1.0"
+  },
+  "dependencies": {
+    "jest-environment-jsdom": "^30.4.1"
+  }
+}

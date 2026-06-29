@@ -799,14 +799,23 @@
         };
 
         // --- SISTEMA SPA CON 3 VISTAS ---
-        function navigate(page) {
-            const pages = {
-                'home': document.getElementById('page-home'),
-                'soluciones': document.getElementById('page-soluciones'),
-                'nosotros': document.getElementById('page-nosotros')
-            };
+        let pagesCache = null;
+        let pageEntries = null;
 
-            for (const [key, el] of Object.entries(pages)) {
+        function navigate(page) {
+            if (!pagesCache) {
+                pagesCache = {
+                    'home': document.getElementById('page-home'),
+                    'soluciones': document.getElementById('page-soluciones'),
+                    'nosotros': document.getElementById('page-nosotros')
+                };
+                pageEntries = Object.entries(pagesCache);
+            }
+
+            for (let i = 0; i < pageEntries.length; i++) {
+                const entry = pageEntries[i];
+                const key = entry[0];
+                const el = entry[1];
                 if (key === page) {
                     el.classList.remove('hidden');
                     el.classList.remove('animate-entrance');

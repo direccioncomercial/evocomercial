@@ -1,0 +1,30 @@
+--- index.html
++++ index.html
+@@ -829,6 +829,29 @@
+         function closeInfo() { document.body.style.overflow = 'auto'; document.getElementById('info-modal').innerHTML = ''; }
+
++        // --- RENDERIZADO DINÁMICO DE TARJETAS DE LIDERAZGO ---
++        function renderLeadershipCards() {
++            const containers = document.querySelectorAll('.leadership-cards-container');
++            if (!containers.length) return;
++
++            const cardsHtml = Object.keys(directorData).map(id => {
++                const d = directorData[id];
++                return `<!-- ${id} -->
++                    <div class="bg-white p-5 rounded-2xl shadow-sm flex items-center gap-4 text-left border-l-4 ${d.colorBorder} hover:shadow-lg transition-all cursor-pointer transform hover:-translate-y-1" onclick="showDirector('${id}')">
++                        <div class="w-16 h-16 bg-gray-200 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
++                            <img src="${d.image}" class="w-full h-full object-cover ${d.position}" alt="${d.shortName}">
++                        </div>
++                        <div>
++                            <h4 class="font-bold text-brandDark text-sm ${d.colorHover} transition-colors">${d.shortName}</h4>
++                            <p class="text-[9px] text-gray-500 uppercase font-bold tracking-wide mt-1">${d.roleType}</p>
++                            <p class="text-[9px] ${d.colorText} font-bold mt-0.5">${d.roleArea}</p>
++                        </div>
++                    </div>`;
++            }).join('');
++
++            containers.forEach(container => container.innerHTML = cardsHtml);
++        }
++
+         // --- NAVEGACIÓN Y MENÚ LATERAL ---
+         function toggleMenu() {

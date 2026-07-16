@@ -820,17 +820,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function navigateToSection(sectionId) {
-            navigate('home');
-            setTimeout(() => {
-                const el = document.getElementById(sectionId);
-                if(el) {
-                    const y = el.getBoundingClientRect().top + window.pageYOffset - 100;
-                    window.scrollTo({top: y, behavior: 'smooth'});
-                }
-            }, 50);
-        }
-
         // --- MODALES ---
         function showInfo(service) {
             const data = serviceData[service] || serviceData['Seguros'];

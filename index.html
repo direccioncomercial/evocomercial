@@ -849,12 +849,12 @@
         function closeInfo() { document.body.style.overflow = 'auto'; document.getElementById('info-modal').innerHTML = ''; }
 
         // --- NAVEGACIÓN Y MENÚ LATERAL ---
+        const sideMenuEl = document.getElementById('side-menu'); const backdropEl = document.getElementById('backdrop');
         function toggleMenu() {
-            const menu = document.getElementById('side-menu'); const backdrop = document.getElementById('backdrop');
-            if (menu.classList.contains('drawer-open')) {
-                menu.classList.remove('drawer-open'); backdrop.classList.remove('opacity-100'); setTimeout(() => backdrop.classList.add('hidden'), 300);
+            if (sideMenuEl.classList.contains('drawer-open')) {
+                sideMenuEl.classList.remove('drawer-open'); backdropEl.classList.remove('opacity-100'); setTimeout(() => backdropEl.classList.add('hidden'), 300);
             } else {
-                backdrop.classList.remove('hidden'); void backdrop.offsetWidth; backdrop.classList.add('opacity-100'); menu.classList.add('drawer-open');
+                backdropEl.classList.remove('hidden'); void backdropEl.offsetWidth; backdropEl.classList.add('opacity-100'); sideMenuEl.classList.add('drawer-open');
             }
         }
 

@@ -1,0 +1,88 @@
+--- index.html
++++ index.html
+@@ -364,39 +364,7 @@
+             <!-- LIDERAZGO EJECUTIVO -->
+             <section id="liderazgo" class="bg-brandDark/5 rounded-[3rem] p-8 md:p-12 text-center">
+                 <h4 class="text-[10px] font-bold text-brandDark/60 uppercase tracking-widest mb-10">Liderazgo Ejecutivo</h4>
+-                <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+-                    <!-- Dolores -->
+-                    <div class="bg-white p-5 rounded-2xl shadow-sm flex items-center gap-4 text-left border-l-4 border-brandGold hover:shadow-lg transition-all cursor-pointer transform hover:-translate-y-1" onclick="showDirector('Dolores')">
+-                        <div class="w-16 h-16 bg-gray-200 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
+-                            <img src="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/%C3%B1a%C3%B1ita%20evoluser.png" class="w-full h-full object-cover object-top" alt="Dolores Ortega">
+-                        </div>
+-                        <div>
+-                            <h4 class="font-bold text-brandDark text-sm hover:text-brandGold transition-colors">Dolores Ortega Rogel</h4>
+-                            <p class="text-[9px] text-gray-500 uppercase font-bold tracking-wide mt-1">Socio Directora</p>
+-                            <p class="text-[9px] text-brandGold font-bold mt-0.5">Comercial & Seguros</p>
+-                        </div>
+-                    </div>
+-                    <!-- Christian -->
+-                    <div class="bg-white p-5 rounded-2xl shadow-sm flex items-center gap-4 text-left border-l-4 border-brandTeal hover:shadow-lg transition-all cursor-pointer transform hover:-translate-y-1" onclick="showDirector('Christian')">
+-                        <div class="w-16 h-16 bg-gray-200 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
+-                            <img src="https://raw.githubusercontent.com/direccioncomercial/evoluser-web/1b862973e8003850daadd6a47bffd5b6cf04b2f6/imagen3.png" class="w-full h-full object-cover object-center" alt="Christian Ortega">
+-                        </div>
+-                        <div>
+-                            <h4 class="font-bold text-brandDark text-sm hover:text-brandTeal transition-colors">Christian Ortega Rogel</h4>
+-                            <p class="text-[9px] text-gray-500 uppercase font-bold tracking-wide mt-1">Socio Director</p>
+-                            <p class="text-[9px] text-brandTeal font-bold mt-0.5">Técnico & Operaciones</p>
+-                        </div>
+-                    </div>
+-                    <!-- Nury -->
+-                    <div class="bg-white p-5 rounded-2xl shadow-sm flex items-center gap-4 text-left border-l-4 border-indigo-500 hover:shadow-lg transition-all cursor-pointer transform hover:-translate-y-1" onclick="showDirector('Nury')">
+-                        <div class="w-16 h-16 bg-gray-200 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
+-                            <img src="https://raw.githubusercontent.com/direccioncomercial/evoluser-web/main/imagen2.png" class="w-full h-full object-cover object-top" alt="Nury Echeverria">
+-                        </div>
+-                        <div>
+-                            <h4 class="font-bold text-brandDark text-sm hover:text-indigo-600 transition-colors">Nury Echeverría</h4>
+-                            <p class="text-[9px] text-gray-500 uppercase font-bold tracking-wide mt-1">Socio Directora</p>
+-                            <p class="text-[9px] text-indigo-500 font-bold mt-0.5">Producción & Mktg 4K</p>
+-                        </div>
+-                    </div>
+-                </div>
++                <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto leadership-cards-container"></div>
+                 <p class="mt-8 text-xs text-gray-500 italic max-w-xl mx-auto leading-relaxed">"Gestionamos en equipo soluciones integrales que potencian el ser, protegen tu patrimonio y elevan la autoridad de tu marca."</p>
+             </section>
+
+@@ -620,39 +588,7 @@
+             <!-- LIDERAZGO EJECUTIVO -->
+             <section class="bg-brandDark/5 rounded-[3rem] p-8 md:p-12 text-center">
+                 <h4 class="text-[10px] font-bold text-brandDark/60 uppercase tracking-widest mb-10">Liderazgo Ejecutivo</h4>
+-                <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+-                    <!-- Dolores -->
+-                    <div class="bg-white p-5 rounded-2xl shadow-sm flex items-center gap-4 text-left border-l-4 border-brandGold hover:shadow-lg transition-all cursor-pointer transform hover:-translate-y-1" onclick="showDirector('Dolores')">
+-                        <div class="w-16 h-16 bg-gray-200 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
+-                            <img src="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/%C3%B1a%C3%B1ita%20evoluser.png" class="w-full h-full object-cover object-top" alt="Dolores Ortega">
+-                        </div>
+-                        <div>
+-                            <h4 class="font-bold text-brandDark text-sm hover:text-brandGold transition-colors">Dolores Ortega Rogel</h4>
+-                            <p class="text-[9px] text-gray-500 uppercase font-bold tracking-wide mt-1">Socio Directora</p>
+-                            <p class="text-[9px] text-brandGold font-bold mt-0.5">Comercial & Seguros</p>
+-                        </div>
+-                    </div>
+-                    <!-- Christian -->
+-                    <div class="bg-white p-5 rounded-2xl shadow-sm flex items-center gap-4 text-left border-l-4 border-brandTeal hover:shadow-lg transition-all cursor-pointer transform hover:-translate-y-1" onclick="showDirector('Christian')">
+-                        <div class="w-16 h-16 bg-gray-200 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
+-                            <img src="https://raw.githubusercontent.com/direccioncomercial/evoluser-web/1b862973e8003850daadd6a47bffd5b6cf04b2f6/imagen3.png" class="w-full h-full object-cover object-center" alt="Christian Ortega">
+-                        </div>
+-                        <div>
+-                            <h4 class="font-bold text-brandDark text-sm hover:text-brandTeal transition-colors">Christian Ortega Rogel</h4>
+-                            <p class="text-[9px] text-gray-500 uppercase font-bold tracking-wide mt-1">Socio Director</p>
+-                            <p class="text-[9px] text-brandTeal font-bold mt-0.5">Técnico & Operaciones</p>
+-                        </div>
+-                    </div>
+-                    <!-- Nury -->
+-                    <div class="bg-white p-5 rounded-2xl shadow-sm flex items-center gap-4 text-left border-l-4 border-indigo-500 hover:shadow-lg transition-all cursor-pointer transform hover:-translate-y-1" onclick="showDirector('Nury')">
+-                        <div class="w-16 h-16 bg-gray-200 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
+-                            <img src="https://raw.githubusercontent.com/direccioncomercial/evoluser-web/main/imagen2.png" class="w-full h-full object-cover object-top" alt="Nury Echeverria">
+-                        </div>
+-                        <div>
+-                            <h4 class="font-bold text-brandDark text-sm hover:text-indigo-600 transition-colors">Nury Echeverría</h4>
+-                            <p class="text-[9px] text-gray-500 uppercase font-bold tracking-wide mt-1">Socio Directora</p>
+-                            <p class="text-[9px] text-indigo-500 font-bold mt-0.5">Producción & Mktg 4K</p>
+-                        </div>
+-                    </div>
+-                </div>
++                <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto leadership-cards-container"></div>
+             </section>
+         </main>
+     </div>

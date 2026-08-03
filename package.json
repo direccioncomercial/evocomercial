@@ -1,0 +1,13 @@
+{
+  "name": "evocomercial-tests",
+  "version": "1.0.0",
+  "description": "Tests for EvoluSer frontend",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "jsdom": "^22.1.0"
+  },
+  "type": "commonjs"
+}

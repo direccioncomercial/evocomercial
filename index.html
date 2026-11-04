@@ -261,6 +261,7 @@
             <a href="#" onclick="navigate('home')" class="hover:text-brandTeal transition-colors py-2 border-b-2 border-transparent hover:border-brandTeal">Inicio</a>
             <a href="#" onclick="navigate('soluciones')" class="hover:text-brandTeal transition-colors py-2 border-b-2 border-transparent hover:border-brandTeal">Soluciones</a>
             <a href="#" onclick="navigate('nosotros')" class="hover:text-brandTeal transition-colors py-2 border-b-2 border-transparent hover:border-brandTeal">Nosotros</a>
+            <a href="#" onclick="navigate('revista')" class="hover:text-brandTeal transition-colors py-2 border-b-2 border-transparent hover:border-brandTeal flex items-center gap-1.5"><i class="fas fa-book-open text-brandGold text-xs"></i> Revista</a>
             <a href="#contacto" class="hover:text-brandTeal transition-colors py-2 border-b-2 border-transparent hover:border-brandTeal">Contacto</a>
         </div>
 
@@ -285,6 +286,7 @@
                 <a href="#" onclick="navigate('home'); toggleMenu();" class="block text-xl font-bold hover:text-brandTeal transition-colors">Inicio</a>
                 <a href="#" onclick="navigate('soluciones'); toggleMenu();" class="block text-xl font-bold hover:text-brandTeal transition-colors">Portafolio Integral</a>
                 <a href="#" onclick="navigate('nosotros'); toggleMenu();" class="block text-xl font-bold hover:text-brandTeal transition-colors">Visión EvoluSer</a>
+                <a href="#" onclick="navigate('revista'); toggleMenu();" class="block text-xl font-bold hover:text-brandTeal transition-colors"><i class="fas fa-book-open text-brandGold mr-2 text-base"></i> Revista Corporativa (PDF)</a>
                 <div class="pt-8 border-t border-white/10">
                     <h3 class="text-brandTeal text-xs font-bold uppercase mb-4 tracking-widest">Conéctate</h3>
                     <div class="grid grid-cols-3 gap-6 text-2xl text-gray-400">
@@ -452,6 +454,29 @@
                     </div>
                 </div>
                 <p class="mt-8 text-xs text-gray-500 italic max-w-xl mx-auto leading-relaxed">"Gestionamos en equipo soluciones integrales que potencian el ser, protegen tu patrimonio y elevan la autoridad de tu marca."</p>
+            </section>
+
+            <!-- DESTACADO REVISTA OFICIAL EVOLUSER CAPITAL EN HOME -->
+            <section class="pt-4">
+                <div class="bg-gradient-to-br from-brandDark via-[#093558] to-brandTeal rounded-[2.5rem] p-8 md:p-14 shadow-2xl border border-brandGold/30 flex flex-col lg:flex-row items-center gap-10 text-left relative overflow-hidden">
+                    <div class="w-full lg:w-1/3 flex justify-center">
+                        <a href="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/revista_evocomercial.pdf" target="_blank" rel="noopener noreferrer" class="block w-60 md:w-64 aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border-4 border-brandGold/40 transform hover:scale-105 transition duration-500 relative group">
+                            <img src="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/portada_revista.png" onerror="this.src='portada_revista.png'" alt="Portada EvoluSer Capital Magazine" loading="lazy" decoding="async" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-brandDark/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                                <span class="bg-brandGold text-brandDark px-5 py-2.5 rounded-full font-black text-xs uppercase tracking-widest shadow-lg"><i class="fas fa-file-pdf mr-2"></i>Abrir PDF</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="w-full lg:w-2/3 text-white space-y-5">
+                        <span class="inline-block bg-brandGold/20 border border-brandGold text-brandGold px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.25em]">Publicación Oficial • Edición Ejecutiva 2026</span>
+                        <h3 class="text-3xl md:text-5xl font-black leading-tight section-title">EVOLUSER <span class="text-brandGold">CAPITAL</span></h3>
+                        <p class="text-white/90 text-sm md:text-base font-medium leading-relaxed border-l-4 border-brandGold pl-5">Explore nuestra revista oficial en formato PDF con la portada ejecutiva, visión patrimonial y los perfiles completos con fotografía de nuestros Socios Directores: <strong>Dolores Eugenia Ortega Rogel</strong> (Seguros & Comercial), <strong>Christian Roberth Ortega Rogel</strong> (Estrategia & Conectividad Pyme) y <strong>Nury Echeverría</strong> (Producción Audiovisual 4K).</p>
+                        <div class="flex flex-wrap gap-4 pt-2">
+                            <a href="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/revista_evocomercial.pdf" target="_blank" rel="noopener noreferrer" class="bg-brandGold hover:bg-white text-brandDark px-7 py-3.5 rounded-full font-black text-xs uppercase tracking-widest transition shadow-lg inline-flex items-center gap-2"><i class="fas fa-file-pdf text-base"></i> Leer Revista Completa (PDF)</a>
+                            <button onclick="navigate('revista')" class="px-7 py-3.5 rounded-full border-2 border-white/40 hover:border-brandGold hover:text-brandGold text-white font-bold text-xs uppercase tracking-widest transition inline-flex items-center gap-2"><i class="fas fa-book-open"></i> Ver Sección Revista</button>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- CLIENTES Y ALIADOS ESTRATÉGICOS -->
@@ -711,6 +736,120 @@
         </main>
     </div>
 
+    <!-- ========================================== -->
+    <!-- VISTA 4: REVISTA CORPORATIVA (PDF)         -->
+    <!-- ========================================== -->
+    <div id="page-revista" class="hidden">
+        <div class="pt-36 pb-12 text-center relative z-10 px-4">
+            <span class="text-brandGold font-bold text-[10px] uppercase tracking-[0.3em] px-5 py-2 rounded-full mb-6 inline-block border border-brandGold/30 bg-brandGold/5">Publicación Corporativa Oficial</span>
+            <h2 class="text-4xl md:text-6xl font-black text-brandDark mb-4 tracking-tight">Revista <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandTeal to-brandDark">EvoluSer Capital</span></h2>
+            <p class="text-gray-500 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-medium">Edición 2026: Protección Patrimonial, Estrategia Comercial y Producción Audiovisual 4K liderada por nuestros Socios Directores.</p>
+        </div>
+
+        <main class="container mx-auto px-4 pb-24 max-w-6xl space-y-16">
+            <!-- Visor Principal Estilo CIMAJ -->
+            <div class="bg-brandDark rounded-[2.5rem] overflow-hidden shadow-2xl border border-brandGold/30">
+                <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+                    <!-- Columna Portada (5 cols) -->
+                    <div class="lg:col-span-5 p-8 md:p-12 bg-gradient-to-br from-[#04121F] to-brandDark flex flex-col items-center justify-center border-b lg:border-b-0 lg:border-r border-white/10">
+                        <a href="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/revista_evocomercial.pdf" target="_blank" rel="noopener noreferrer" class="relative w-full max-w-[320px] aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)] border-2 border-brandGold/40 group cursor-pointer block">
+                            <img src="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/portada_revista.png" onerror="this.src='portada_revista.png'" alt="Portada Revista EvoluSer Capital" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex items-end justify-center p-6">
+                                <span class="bg-brandGold text-brandDark px-5 py-2.5 rounded-full font-black text-xs uppercase tracking-widest shadow-lg"><i class="fas fa-book-reader mr-2"></i>Clic para abrir PDF (10 Págs.)</span>
+                            </div>
+                        </a>
+                        <span class="text-brandGold text-[11px] uppercase tracking-widest mt-4 font-bold"><i class="fas fa-check-circle mr-1"></i> Edición A4 Editorial • 10 Páginas</span>
+                    </div>
+
+                    <!-- Columna Contenido de la Edición (7 cols) -->
+                    <div class="lg:col-span-7 p-8 md:p-14 text-white space-y-6 text-left">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brandGold/20 border border-brandGold text-brandGold text-xs font-bold uppercase tracking-widest">
+                            <i class="fas fa-crown"></i> Edición Destacada: Liderazgo & Patrimonio
+                        </div>
+                        <h3 class="text-2xl md:text-4xl font-black leading-tight section-title">El liderazgo de nuestros Socios Directores: Protección patrimonial con trato VIP</h3>
+                        <p class="text-white/80 text-sm md:text-base leading-relaxed text-justify">
+                            En esta edición oficial de <strong>EVOLUSER CAPITAL</strong> presentamos nuestro compromiso con las familias y empresas del Ecuador, nuestra Visión y Misión, y las páginas editoriales con fotografía y trayectoria de cada uno de nuestros representantes:
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-brandGold transition">
+                                <h4 class="text-brandGold font-bold text-xs uppercase tracking-wider mb-1"><i class="fas fa-shield-alt mr-1.5"></i>Pág. 5 • Dolores Ortega Rogel</h4>
+                                <p class="text-white/75 text-xs leading-relaxed">Socia Directora Comercial & Seguros: Movilidad Segura Integral, Flotas, Medicina Prepagada, Vida y Multiriesgo Industrial.</p>
+                            </div>
+                            <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-brandTeal transition">
+                                <h4 class="text-brandTeal font-bold text-xs uppercase tracking-wider mb-1"><i class="fas fa-chart-line mr-1.5"></i>Pág. 6 • Christian Ortega Rogel</h4>
+                                <p class="text-white/75 text-xs leading-relaxed">Socio Director Técnico & Operaciones: Estrategia Comercial Pymes, Formalización Societaria y Fibra Corporativa.</p>
+                            </div>
+                            <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-indigo-400 transition">
+                                <h4 class="text-indigo-400 font-bold text-xs uppercase tracking-wider mb-1"><i class="fas fa-video mr-1.5"></i>Pág. 7 • Nury Echeverría</h4>
+                                <p class="text-white/75 text-xs leading-relaxed">Socia Directora de Producción 4K: Paquete cinematográfico 4 en 1 ($80 USD) para TikTok, Instagram y Facebook + Bono Gráfico.</p>
+                            </div>
+                            <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-brandGold transition">
+                                <h4 class="text-brandGold font-bold text-xs uppercase tracking-wider mb-1"><i class="fas fa-comments mr-1.5"></i>Págs. 8-10 • Portafolio & Diálogo</h4>
+                                <p class="text-white/75 text-xs leading-relaxed">Soluciones para su tranquilidad, entrevista con los Socios Directores, consultor IA "Ser" y canales VIP de contacto.</p>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 flex flex-wrap gap-4">
+                            <a href="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/revista_evocomercial.pdf" target="_blank" rel="noopener noreferrer" class="bg-brandGold hover:bg-white text-brandDark px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest transition shadow-xl inline-flex items-center gap-3">
+                                <i class="fas fa-file-pdf text-lg"></i> Leer Revista Completa (PDF)
+                            </a>
+                            <a href="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/revista_evocomercial.pdf" download="Revista_EvoluSer_Comercial.pdf" target="_blank" rel="noopener noreferrer" class="px-6 py-4 rounded-full bg-white/10 hover:bg-white hover:text-brandDark text-white font-bold text-xs uppercase tracking-widest transition inline-flex items-center gap-2 border border-white/25">
+                                <i class="fas fa-download"></i> Descargar PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjetas de Representantes en la Revista -->
+            <div>
+                <div class="text-center mb-10">
+                    <h3 class="text-2xl md:text-3xl font-black text-brandDark uppercase tracking-wider section-title">Representantes en esta Edición</h3>
+                    <p class="text-gray-500 text-sm mt-2">Perfiles directivos destacados en las páginas 5, 6 y 7 de la Revista Oficial</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition flex flex-col text-left">
+                        <div class="h-80 overflow-hidden bg-gray-100 relative">
+                            <img src="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/%C3%B1a%C3%B1ita%20evoluser.png" alt="Dolores Eugenia Ortega Rogel" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500">
+                            <span class="absolute bottom-3 left-3 bg-brandDark/90 text-brandGold text-[10px] font-bold uppercase px-3 py-1 rounded-full">Página 5 • Revista</span>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col">
+                            <h4 class="text-xl font-black text-brandDark">Dolores Eugenia Ortega Rogel</h4>
+                            <p class="text-brandGold text-xs font-bold uppercase tracking-wider mb-3">Socia Directora Comercial & Seguros</p>
+                            <p class="text-gray-600 text-xs leading-relaxed mb-4 flex-1">Estructuración de seguros vehiculares, flotas empresariales, medicina prepagada, vida y multiriesgo industrial con asistencia VIP 24/7.</p>
+                            <a href="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/revista_evocomercial.pdf#page=5" target="_blank" rel="noopener noreferrer" class="text-brandDark font-bold text-xs uppercase hover:text-brandTeal transition inline-flex items-center">Ver perfil en el PDF <i class="fas fa-arrow-right ml-2"></i></a>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition flex flex-col text-left">
+                        <div class="h-80 overflow-hidden bg-gray-100 relative">
+                            <img src="https://raw.githubusercontent.com/direccioncomercial/evoluser-web/1b862973e8003850daadd6a47bffd5b6cf04b2f6/imagen3.png" alt="Christian Roberth Ortega Rogel" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500">
+                            <span class="absolute bottom-3 left-3 bg-brandDark/90 text-brandTeal text-[10px] font-bold uppercase px-3 py-1 rounded-full">Página 6 • Revista</span>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col">
+                            <h4 class="text-xl font-black text-brandDark">Christian Roberth Ortega Rogel</h4>
+                            <p class="text-brandTeal text-xs font-bold uppercase tracking-wider mb-3">Socio Director Técnico & Operaciones</p>
+                            <p class="text-gray-600 text-xs leading-relaxed mb-4 flex-1">Consultoría comercial para Pymes, embudos de ventas, formalización societaria y enlaces corporativos de fibra óptica y telefonía móvil.</p>
+                            <a href="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/revista_evocomercial.pdf#page=6" target="_blank" rel="noopener noreferrer" class="text-brandDark font-bold text-xs uppercase hover:text-brandTeal transition inline-flex items-center">Ver perfil en el PDF <i class="fas fa-arrow-right ml-2"></i></a>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition flex flex-col text-left">
+                        <div class="h-80 overflow-hidden bg-gray-100 relative">
+                            <img src="https://raw.githubusercontent.com/direccioncomercial/evoluser-web/main/imagen2.png" alt="Nury Echeverría" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500">
+                            <span class="absolute bottom-3 left-3 bg-brandDark/90 text-indigo-400 text-[10px] font-bold uppercase px-3 py-1 rounded-full">Página 7 • Revista</span>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col">
+                            <h4 class="text-xl font-black text-brandDark">Nury Echeverría</h4>
+                            <p class="text-indigo-600 text-xs font-bold uppercase tracking-wider mb-3">Socia Directora Producción & Marketing 4K</p>
+                            <p class="text-gray-600 text-xs leading-relaxed mb-4 flex-1">Dirección de rodaje cinematográfico 4K ProRes, guion estratégico, edición con subtítulos animados y posicionamiento en redes ($80 USD).</p>
+                            <a href="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/revista_evocomercial.pdf#page=7" target="_blank" rel="noopener noreferrer" class="text-brandDark font-bold text-xs uppercase hover:text-brandTeal transition inline-flex items-center">Ver perfil en el PDF <i class="fas fa-arrow-right ml-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
     <!-- FOOTER -->
     <footer id="contacto" class="bg-brandDark text-white pt-14 pb-10 mt-auto border-t border-brandTeal/30 relative z-30 animate-entrance delay-300">
         <div class="container mx-auto px-6 max-w-7xl relative z-20">
@@ -896,12 +1035,13 @@
             }
         };
 
-        // --- SISTEMA SPA CON 3 VISTAS ---
+        // --- SISTEMA SPA CON 4 VISTAS ---
         function navigate(page) {
             const pages = {
                 'home': document.getElementById('page-home'),
                 'soluciones': document.getElementById('page-soluciones'),
-                'nosotros': document.getElementById('page-nosotros')
+                'nosotros': document.getElementById('page-nosotros'),
+                'revista': document.getElementById('page-revista')
             };
 
             for (const [key, el] of Object.entries(pages)) {
@@ -1063,7 +1203,8 @@
                     { label: "🛡️ Seguros Corporativos / Multiriesgo", intent: "seguros" },
                     { label: "📶 Internet Fibra y Planes Móviles", intent: "internet" },
                     { label: "💼 Consultoría Comercial Pymes", intent: "comercial" },
-                    { label: "🎥 Producción Audiovisual 4K ($80)", intent: "marketing" }
+                    { label: "🎥 Producción Audiovisual 4K ($80)", intent: "marketing" },
+                    { label: "📖 Leer Revista EvoluSer Capital (PDF)", action: "navigate('revista'); toggleChat();" }
                 ]
             },
             vehiculos: {

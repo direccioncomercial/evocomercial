@@ -180,11 +180,59 @@
             margin-bottom: 2rem; display: flex; justify-content: center; align-items: center;
         }
 
-        /* --- EV CHAT INTERFACE --- */
-        #ev-container { 
-            position: fixed; bottom: 2rem; right: 2rem; z-index: 90; 
-            display: flex; flex-direction: column; align-items: flex-end; cursor: pointer;
+        /* --- SER CHAT INTERFACE (ESTÁNDAR EV) --- */
+        @keyframes floatAvatar {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
         }
+        .animate-float {
+            animation: floatAvatar 3.5s ease-in-out infinite;
+        }
+        @keyframes glowLatency {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(42, 139, 146, 0.45)); }
+            50% { filter: drop-shadow(0 0 22px rgba(0, 40, 69, 0.75)); }
+        }
+        .animate-glow-latency {
+            animation: glowLatency 4s ease-in-out infinite;
+        }
+        .shadow-neon-light {
+            box-shadow: 0 8px 25px -4px rgba(42, 139, 146, 0.35), 0 4px 10px -2px rgba(0, 40, 69, 0.15);
+        }
+        .ev-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            background: #f8fafc;
+            color: #002845;
+            border: 1px solid rgba(42, 139, 146, 0.3);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .ev-chip:hover {
+            background: #002845;
+            color: #ffffff;
+            border-color: #002845;
+            transform: translateY(-1px);
+        }
+        @keyframes typingBounce {
+            0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #2A8B92;
+            border-radius: 50%;
+            display: inline-block;
+            animation: typingBounce 1.4s infinite ease-in-out both;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
         
         .glass-card { 
             background: rgba(255, 255, 255, 0.9); 
@@ -702,32 +750,78 @@
         </div>
     </footer>
 
-    <!-- EV: AI CHAT WINDOW -->
-    <div id="chat-window" class="fixed bottom-32 right-8 w-80 h-96 bg-white rounded-2xl shadow-2xl z-[1500] hidden flex-col overflow-hidden border border-slate-200">
-        <div class="bg-gradient-to-r from-brandDark to-brandTeal p-4 text-white flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center font-bold text-xs">EV</div>
-                <span class="font-bold text-sm">Asistente Virtual</span>
-            </div>
-            <button onclick="toggleChat()" class="text-white/80 hover:text-white transition-colors"><i class="fas fa-times"></i></button>
+    <!-- SER MOVIBLE Y FUTURISTA (ESTÁNDAR DE DISEÑO EV) -->
+    <div id="ser-floating-container" class="fixed z-[1500] flex flex-col items-center cursor-pointer group select-none touch-none" style="bottom: 30px; right: 30px;">
+        <!-- Globo de Texto Superior Dinámico -->
+        <div id="ser-speech-bubble" onclick="if(!hasMoved) toggleChat();" class="bg-white px-4 py-2 rounded-xl shadow-neon-light border-b-2 border-brandDark mb-2 animate-bounce whitespace-nowrap relative flex items-center gap-2">
+           <span class="w-2 h-2 rounded-full bg-brandTeal animate-ping"></span>
+           <span id="ser-bubble-text" class="text-xs font-extrabold text-brandDark uppercase tracking-wider">
+             ¡Hola! Soy Ser. ¿Hablamos?
+           </span>
         </div>
-        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto bg-slate-50 flex flex-col gap-3">
-            <div class="max-w-[85%] p-3 rounded-2xl text-sm leading-relaxed bg-white text-slate-700 shadow-sm border border-slate-100 rounded-tl-none self-start">Bienvenido. Soy <strong>EV</strong>. 🤖<br>¿En qué puedo asesorarle hoy?</div>
-        </div>
-        <div class="p-3 bg-white border-t border-slate-100 flex gap-2">
-            <input type="text" id="chat-input" class="flex-1 border border-slate-200 rounded-full px-4 py-2 text-sm outline-none focus:border-brandTeal" placeholder="Escriba aquí..." onkeypress="if(event.key==='Enter') handleChat()">
-            <button class="bg-brandDark text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-brandTeal transition-colors" onclick="handleChat()"><i class="fas fa-paper-plane text-xs"></i></button>
+        
+        <!-- Contenedor del Avatar (Aplica el Brillo Azul/Teal Neón) -->
+        <div class="w-[95px] h-auto relative animate-glow-latency">
+           <!-- Imagen de Ser (Aplica la Flotación) -->
+           <img 
+             src="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/ser_avatar.png" 
+             id="ser-avatar-trigger"
+             class="w-full h-full object-contain drop-shadow-2xl transition-transform duration-300 animate-float group-hover:scale-105" 
+             alt="Consultor IA Ser" 
+             loading="lazy" decoding="async">
         </div>
     </div>
 
-    <!-- EV: FLOATING BUTTON -->
-    <div id="ev-container" class="fixed bottom-6 right-6 z-[1500] flex flex-col items-end cursor-pointer group" onclick="toggleChat()">
-        <div class="bg-white p-3 rounded-2xl rounded-br-none shadow-xl mb-2 text-xs text-slate-700 border border-slate-100 group-hover:-translate-y-1 transition-transform relative">
-            Bienvenido. Soy <span class="font-bold text-brandTeal">EV</span>. <br>¿En qué puedo ayudarle?
-            <div class="absolute -bottom-2 right-0 w-0 h-0 border-l-[10px] border-l-transparent border-t-[10px] border-t-white"></div>
+    <!-- CHATBOT WINDOW MEJORADO CON MOTOR CONVERSACIONAL SER -->
+    <div id="ai-chat-window" class="fixed bottom-24 right-4 md:right-8 w-[92vw] max-w-[400px] bg-white rounded-3xl shadow-2xl flex flex-col transition-all duration-300 transform scale-0 origin-bottom-right z-[1600] hidden border border-brandTeal/30 overflow-hidden" style="height: 560px; max-height: 82vh;">
+        <!-- Cabecera de Ser -->
+        <div class="bg-gradient-to-r from-brandDark via-brandDark to-brandTeal p-4 px-5 flex justify-between items-center border-b-2 border-white/20">
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <img src="https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/ser_avatar.png" alt="Ser Avatar" class="w-12 h-12 object-contain rounded-full bg-white/10 p-0.5 border border-white/30" loading="lazy" decoding="async">
+                    <span class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-400 border-2 border-brandDark rounded-full" title="En línea"></span>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h4 class="text-white font-extrabold text-sm text-nowrap">Consultor Ser</h4>
+                        <span class="bg-white/20 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">IA Activa</span>
+                    </div>
+                    <p class="text-[10px] text-white/80 font-bold uppercase tracking-widest leading-none mt-1">Estrategia & Seguros EvoluSer</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-1.5">
+                <a href="https://wa.me/593984104342?text=Hola%20EvoluSer,%20vengo%20del%20asistente%20Ser%20y%20deseo%20atenci%C3%B3n%20directa" target="_blank" rel="noopener noreferrer" class="bg-white/15 hover:bg-brandTeal text-white text-[10px] font-extrabold px-2.5 py-1.5 rounded-full transition flex items-center gap-1 border border-white/20" title="Hablar por WhatsApp"><i class="fab fa-whatsapp text-xs"></i> <span class="hidden sm:inline">WhatsApp</span></a>
+                <button onclick="resetSerChat()" class="text-white/70 hover:text-white transition p-1.5" title="Reiniciar conversación"><i class="fas fa-rotate-right text-sm"></i></button>
+                <button onclick="toggleChat()" class="text-white/80 hover:text-white transition p-1.5" title="Cerrar"><i class="fas fa-times text-lg"></i></button>
+            </div>
         </div>
-        <div class="w-24 h-24 relative group-hover:scale-105 transition-transform">
-            <img src="https://raw.githubusercontent.com/direccioncomercial/evoluser-web/1b862973e8003850daadd6a47bffd5b6cf04b2f6/imagen6.png" class="w-full h-full object-contain filter drop-shadow-xl" draggable="false" loading="lazy" decoding="async">
+
+        <!-- Historial de Mensajes -->
+        <ul id="chat-box" class="flex-1 overflow-y-auto p-5 space-y-4 bg-gradient-to-b from-[#F7F9FC] to-white scrollbar-hide">
+            <!-- El contenido inicial se inyecta dinámicamente con bienvenida y botones rápidos -->
+        </ul>
+
+        <!-- Barra de Sugerencias Rápidas Persistentes -->
+        <div class="px-4 py-2 bg-gray-50 border-t border-gray-100 flex gap-2 overflow-x-auto scrollbar-hide">
+            <button onclick="triggerQuickIntent('cotizar')" class="ev-chip whitespace-nowrap"><i class="fas fa-calculator text-brandTeal"></i> Cotizar Ahora</button>
+            <button onclick="triggerQuickIntent('agendar')" class="ev-chip whitespace-nowrap"><i class="fab fa-whatsapp text-brandTeal"></i> Agendar Cita</button>
+            <button onclick="triggerQuickIntent('faq')" class="ev-chip whitespace-nowrap"><i class="fas fa-circle-question text-brandTeal"></i> Preguntas Frecuentes</button>
+            <button onclick="triggerQuickIntent('vehiculos')" class="ev-chip whitespace-nowrap"><i class="fas fa-car text-brandTeal"></i> Vehículos y Flotas</button>
+            <button onclick="triggerQuickIntent('salud')" class="ev-chip whitespace-nowrap"><i class="fas fa-heartbeat text-brandTeal"></i> Salud y Vida</button>
+            <button onclick="triggerQuickIntent('seguros')" class="ev-chip whitespace-nowrap"><i class="fas fa-shield-alt text-brandTeal"></i> Seguros Corporativos</button>
+            <button onclick="triggerQuickIntent('internet')" class="ev-chip whitespace-nowrap"><i class="fas fa-wifi text-brandTeal"></i> Internet y Móvil</button>
+            <button onclick="triggerQuickIntent('comercial')" class="ev-chip whitespace-nowrap"><i class="fas fa-briefcase text-brandTeal"></i> Consultoría Pymes</button>
+            <button onclick="triggerQuickIntent('marketing')" class="ev-chip whitespace-nowrap"><i class="fas fa-video text-brandTeal"></i> Video 4K ($80)</button>
+        </div>
+
+        <!-- Input de Chat -->
+        <div class="p-3.5 bg-white border-t border-gray-100">
+            <form onsubmit="event.preventDefault(); handleChat();" class="flex items-center gap-2 bg-gray-50 rounded-full px-4 py-2.5 border border-gray-200 focus-within:border-brandTeal focus-within:ring-2 focus-within:ring-brandTeal/20 transition-all">
+                <input id="chat-input" type="text" autocomplete="off" class="flex-1 bg-transparent border-none outline-none text-sm font-medium text-gray-700" placeholder="Escribe tu consulta a Ser...">
+                <button type="submit" class="w-9 h-9 rounded-full bg-gradient-to-r from-brandDark to-brandTeal text-white flex items-center justify-center hover:shadow-md transition transform hover:scale-105" aria-label="Enviar">
+                    <i class="fas fa-paper-plane text-xs"></i>
+                </button>
+            </form>
         </div>
     </div>
 
@@ -839,7 +933,7 @@
         function showInfo(service) {
             const data = serviceData[service] || serviceData['Seguros'];
             const modalContainer = document.getElementById('info-modal');
-            modalContainer.innerHTML = `<div class="fixed inset-0 z-[3000] flex items-center justify-center p-4 sm:p-6 bg-brandDark/80 backdrop-blur-md opacity-100 transition-opacity duration-300"><div class="bg-white w-full max-w-4xl h-[90vh] md:h-auto md:max-h-[90vh] rounded-[2rem] shadow-2xl flex flex-col relative overflow-hidden animate-fade-in"><button onclick="closeInfo()" class="absolute top-4 right-4 z-50 bg-black/40 backdrop-blur-md text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-brandGold transition-colors shadow-lg"><i class="fas fa-times text-lg"></i></button><div class="w-full h-full overflow-y-auto flex flex-col scrollbar-hide"><div class="h-56 md:h-72 w-full bg-cover bg-center relative flex-shrink-0" style="background-image: url('${data.image}');"><div class="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div><div class="absolute -bottom-8 left-8 flex items-end gap-4 z-20"><div class="w-16 h-16 md:w-20 md:h-20 bg-white rounded-2xl flex items-center justify-center text-3xl md:text-4xl shadow-xl border border-slate-100">${data.icon}</div></div></div><div class="px-8 md:px-12 pb-10 pt-14 flex-1 flex flex-col bg-white"><h3 class="text-2xl md:text-3xl font-black text-brandDark mb-4">${data.title}</h3><div class="text-gray-600 text-sm md:text-base leading-relaxed mb-8 flex-1">${data.content}</div><button onclick="cotizarActual()" class="w-full bg-brandDark text-white py-4 rounded-xl font-bold hover:bg-brandTeal transition-all duration-300 flex items-center justify-center gap-3 shadow-xl mt-auto transform hover:-translate-y-1"><i class="fab fa-whatsapp text-2xl"></i> Solicitar Asesoría Especializada</button></div></div></div></div>`;
+            modalContainer.innerHTML = `<div class="fixed inset-0 z-[3000] flex items-center justify-center p-4 sm:p-6 bg-brandDark/80 backdrop-blur-md opacity-100 transition-opacity duration-300"><div class="bg-white w-full max-w-4xl h-[90vh] md:h-auto md:max-h-[90vh] rounded-[2rem] shadow-2xl flex flex-col relative overflow-hidden animate-fade-in"><button onclick="closeInfo()" class="absolute top-4 right-4 z-50 bg-black/40 backdrop-blur-md text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-brandGold transition-colors shadow-lg"><i class="fas fa-times text-lg"></i></button><div class="w-full h-full overflow-y-auto flex flex-col scrollbar-hide"><div class="h-56 md:h-72 w-full bg-cover bg-center relative flex-shrink-0" style="background-image: url('${data.image}');"><div class="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div><div class="absolute -bottom-8 left-8 flex items-end gap-4 z-20"><div class="w-16 h-16 md:w-20 md:h-20 bg-white rounded-2xl flex items-center justify-center text-3xl md:text-4xl shadow-xl border border-slate-100">${data.icon}</div></div></div><div class="px-8 md:px-12 pb-10 pt-14 flex-1 flex flex-col bg-white"><h3 class="text-2xl md:text-3xl font-black text-brandDark mb-4">${data.title}</h3><div class="text-gray-600 text-sm md:text-base leading-relaxed mb-8 flex-1">${data.content}</div><div class="flex flex-col sm:flex-row gap-3 mt-auto"><button onclick="cotizarActual()" class="flex-1 bg-brandDark text-white py-4 px-6 rounded-xl font-bold hover:bg-brandTeal transition-all duration-300 flex items-center justify-center gap-3 shadow-xl transform hover:-translate-y-1"><i class="fab fa-whatsapp text-2xl"></i> Solicitar Asesoría en WhatsApp</button><button onclick="closeInfo(); askSerFromPage('Quiero más detalles sobre ${data.title}');" class="py-4 px-6 rounded-xl border-2 border-brandDark text-brandDark hover:bg-brandDark hover:text-white font-bold transition-all duration-300 flex items-center justify-center gap-2"><i class="fas fa-robot"></i> Preguntar a Ser</button></div></div></div></div>`;
             document.body.style.overflow = 'hidden';
         }
 
@@ -868,13 +962,373 @@
         function prevSlide() { slides[currentSlide].classList.remove('active'); textItems[currentSlide].classList.remove('active'); currentSlide = (currentSlide - 1 + slides.length) % slides.length; slides[currentSlide].classList.add('active'); textItems[currentSlide].classList.add('active'); }
         setInterval(nextSlide, 8000);
 
-        // --- CHAT IA ---
-        function toggleChat() { const chatWin = document.getElementById('chat-window'); if(chatWin.classList.contains('hidden')){ chatWin.classList.remove('hidden'); chatWin.classList.add('flex'); } else { chatWin.classList.add('hidden'); chatWin.classList.remove('flex'); } }
-        function handleChat() { const input = document.getElementById('chat-input'); const msg = input.value.trim(); if (!msg) return; addMsg(msg, 'user'); input.value = ''; setTimeout(() => { const resp = getAIResponse(msg); addMsg(resp, 'bot'); }, 700); }
-        function addMsg(text, sender) { const div = document.createElement('div'); const alignClass = sender === 'user' ? 'self-end bg-brandTeal text-white' : 'self-start bg-white text-slate-700'; const radiusClass = sender === 'user' ? 'rounded-tr-none' : 'rounded-tl-none'; div.className = `max-w-[85%] p-3 rounded-2xl text-sm leading-relaxed shadow-sm border border-slate-100 ${alignClass} ${radiusClass}`; if (isUser) { div.textContent = text; } else { div.innerHTML = text; } const msgs = document.getElementById('chat-messages'); msgs.appendChild(div); msgs.scrollTop = msgs.scrollHeight; }
-        function getAIResponse(query) { const q = query.toLowerCase(); if (q.includes('hola')) return '¡Hola! Bienvenido a EvoluSer. 🤖 ¿Desea conocer sobre nuestros seguros, conectividad o servicios de marketing audiovisual?'; if (q.includes('auto')) return 'Ofrecemos seguros vehiculares con cobertura total. 🚗 ¿Le gustaría cotizar?'; if (q.includes('internet')) return 'Contamos con planes de internet de alta velocidad corporativos. 📶 ¿En qué ciudad se encuentra?'; if (q.includes('video') || q.includes('marketing')) return '¡Nuestro paquete Audiovisual 4K cuesta solo $80 USD. ¿Te gustaría agendar una grabación?'; return 'Para una asesoría técnica profesional, le sugiero conversar directamente con nuestros directores vía WhatsApp.'; }
-        function cotizarActual() { window.open('https://wa.me/593983900050', '_blank'); }
-        function openWhatsapp() { window.open('https://wa.me/593983900050', '_blank'); }
+        // ==========================================
+        // MOTOR CONVERSACIONAL Y MOVIMIENTO 60 FPS DE "SER" (ESTÁNDAR EV)
+        // ==========================================
+        const SER_AVATAR_URL = "https://raw.githubusercontent.com/direccioncomercial/evocomercial/main/ser_avatar.png";
+        const serContainer = document.getElementById('ser-floating-container');
+        let isDragging = false;
+        let startX, startY, initialX, initialY;
+        let hasMoved = false;
+        let dragRafId = null;
+
+        serContainer.addEventListener('mousedown', startDragging);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', stopDragging);
+        serContainer.addEventListener('touchstart', (e) => startDragging(e.touches[0]), { passive: true });
+        document.addEventListener('touchmove', (e) => drag(e.touches[0]), { passive: true });
+        document.addEventListener('touchend', stopDragging);
+
+        function startDragging(e) {
+            isDragging = true;
+            hasMoved = false;
+            startX = e.clientX;
+            startY = e.clientY;
+            initialX = serContainer.offsetLeft;
+            initialY = serContainer.offsetTop;
+            serContainer.style.transition = 'none';
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+            if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+                hasMoved = true;
+            }
+            if (!hasMoved) return;
+
+            if (dragRafId) cancelAnimationFrame(dragRafId);
+            dragRafId = requestAnimationFrame(() => {
+                const maxX = window.innerWidth - serContainer.offsetWidth - 10;
+                const maxY = window.innerHeight - serContainer.offsetHeight - 10;
+                const newX = Math.max(10, Math.min(initialX + dx, maxX));
+                const newY = Math.max(10, Math.min(initialY + dy, maxY));
+
+                serContainer.style.left = newX + 'px';
+                serContainer.style.top = newY + 'px';
+                serContainer.style.bottom = 'auto';
+                serContainer.style.right = 'auto';
+            });
+        }
+
+        function stopDragging() {
+            if (!isDragging) return;
+            isDragging = false;
+            serContainer.style.transition = 'all 0.25s cubic-bezier(0.22, 1, 0.36, 1)';
+        }
+
+        window.addEventListener('resize', () => {
+            if (serContainer.style.left && serContainer.style.left !== 'auto') {
+                const maxX = window.innerWidth - serContainer.offsetWidth - 10;
+                const maxY = window.innerHeight - serContainer.offsetHeight - 10;
+                serContainer.style.left = Math.max(10, Math.min(serContainer.offsetLeft, maxX)) + 'px';
+                serContainer.style.top = Math.max(10, Math.min(serContainer.offsetTop, maxY)) + 'px';
+            }
+        });
+
+        const serRotatingGreetings = [
+            "¡Hola! Soy Ser. ¿Hablamos?",
+            "🛡️ ¿Blindamos tu patrimonio?",
+            "🚗 Cotiza tu Seguro Vehicular",
+            "🎥 Producción 4K por $80 USD",
+            "📶 Internet Fibra Corporativa",
+            "📅 Agenda una asesoría hoy"
+        ];
+        let serGreetingIdx = 0;
+        setInterval(() => {
+            const win = document.getElementById('ai-chat-window');
+            const bubbleText = document.getElementById('ser-bubble-text');
+            if (bubbleText && win && win.classList.contains('hidden')) {
+                serGreetingIdx = (serGreetingIdx + 1) % serRotatingGreetings.length;
+                bubbleText.style.opacity = '0';
+                setTimeout(() => {
+                    bubbleText.innerText = serRotatingGreetings[serGreetingIdx];
+                    bubbleText.style.transition = 'opacity 0.3s ease';
+                    bubbleText.style.opacity = '1';
+                }, 250);
+            }
+        }, 7000);
+
+        document.getElementById('ser-avatar-trigger').onclick = () => {
+            if (!hasMoved) toggleChat();
+        };
+
+        const serKnowledgeBase = {
+            welcome: {
+                text: `"¡Bienvenido! Soy <strong>Ser</strong>, tu consultor estratégico en <strong>EvoluSer Comercial</strong>. Blindamos tu patrimonio, conectamos tu empresa e impulsamos la autoridad de tu marca.<br><br>¿En qué solución estratégica deseas que te asesore hoy?"`,
+                actions: [
+                    { label: "🚗 Seguros de Vehículos y Flotas", intent: "vehiculos" },
+                    { label: "❤️ Medicina Prepagada y Vida", intent: "salud" },
+                    { label: "🛡️ Seguros Corporativos / Multiriesgo", intent: "seguros" },
+                    { label: "📶 Internet Fibra y Planes Móviles", intent: "internet" },
+                    { label: "💼 Consultoría Comercial Pymes", intent: "comercial" },
+                    { label: "🎥 Producción Audiovisual 4K ($80)", intent: "marketing" }
+                ]
+            },
+            vehiculos: {
+                text: `"Protegemos tu movilidad y tus activos con pólizas automotrices de respuesta inmediata (Dir. <strong>Dolores Ortega</strong>):<br><br>• <strong>Cobertura Total:</strong> Todo riesgo contra choques, daños a terceros y robo total o parcial.<br>• <strong>Asistencia VIP 24/7:</strong> Grúa ilimitada, auxilio mecánico, conductor elegido y auto sustituto.<br>• <strong>Flotas Corporativas:</strong> Tarifas preferenciales para empresas y gestión centralizada de siniestros.<br><br>¿Cómo deseas avanzar?"`,
+                actions: [
+                    { label: "🔍 Ver Ficha de Vehículos", action: "showInfo('Vehículos')" },
+                    { label: "📲 Cotizar Vehículo / Flota en WhatsApp", url: "https://wa.me/593984104342?text=Hola%20EvoluSer,%20convers%C3%A9%20con%20Ser%20y%20deseo%20cotizar%20un%20Seguro%20de%20Veh%C3%ADculos%20/%20Flota" },
+                    { label: "💰 Ver Opciones de Cotización", intent: "cotizar" }
+                ]
+            },
+            salud: {
+                text: `"La salud y tranquilidad de tu familia y colaboradores es nuestra prioridad:<br><br>• <strong>Medicina Prepagada:</strong> Acceso a la mejor red hospitalaria nacional e internacional.<br>• <strong>Seguros de Vida y Asistencia:</strong> Respaldo financiero sólido e irrevocable para los tuyos.<br>• <strong>Beneficios Corporativos:</strong> Cobertura dental, maternidad, telemedicina 24/7 y farmacia.<br><br>¿Deseas una cotización individual, familiar o corporativa?"`,
+                actions: [
+                    { label: "❤️ Ver Ficha de Salud y Vida", action: "showInfo('Salud')" },
+                    { label: "📲 Cotizar Plan con Dolores Ortega", url: "https://wa.me/593984104342?text=Hola%20EvoluSer,%20habl%C3%A9%20con%20Ser%20y%20deseo%20asesor%C3%ADa%20en%20Salud,%20Medicina%20Prepagada%20o%20Vida" }
+                ]
+            },
+            seguros: {
+                text: `"Blindamos la infraestructura y continuidad operativa de tu empresa frente a cualquier imprevisto:<br><br>• <strong>Multiriesgo Industrial y Comercial:</strong> Incendio, terremoto, inundación y rotura de maquinaria.<br>• <strong>Responsabilidad Civil y Fianzas:</strong> Protección legal y patrimonial frente a terceros.<br>• <strong>Lucro Cesante:</strong> Respaldo de tus ingresos fijos si tu operación se detiene.<br><br>¿Analizamos el blindaje de tu negocio?"`,
+                actions: [
+                    { label: "🛡️ Ver Ficha Seguros Corporativos", action: "showInfo('Seguros')" },
+                    { label: "📲 Hablar con Dir. Dolores Ortega", url: "https://wa.me/593984104342?text=Hola%20EvoluSer,%20vengo%20del%20chat%20con%20Ser%20y%20requiero%20asesor%C3%ADa%20en%20Seguros%20Corporativos%20/%20Activos" }
+                ]
+            },
+            internet: {
+                text: `"Mantenemos tu empresa y hogar siempre conectados con tecnología de alta disponibilidad:<br><br>• <strong>Enlaces Dedicados Corporativos:</strong> Fibra óptica 100% simétrica con estabilidad garantizada.<br>• <strong>Planes Móviles Empresariales:</strong> Flotas celulares con datos y minutos ilimitados.<br>• <strong>Internet Hogar y Pyme:</strong> Ultra velocidad con tarifas preferenciales.<br><br>¿Deseas validar cobertura y planes en tu ciudad?"`,
+                actions: [
+                    { label: "📶 Ver Ficha de Conectividad", action: "showInfo('Internet')" },
+                    { label: "📲 Consultar Planes en WhatsApp", url: "https://wa.me/593996408009?text=Hola%20EvoluSer,%20habl%C3%A9%20con%20Ser%20y%20deseo%20informaci%C3%B3n%20sobre%20Internet%20Corporativo%20y%20Telefon%C3%ADa%20M%C3%B3vil" }
+                ]
+            },
+            comercial: {
+                text: `"Con nuestro Director Técnico <strong>Christian Ortega</strong>, estructuramos y escalamos tu empresa:<br><br>• <strong>Estrategia Comercial y Ventas:</strong> Diseño de embudos comerciales y entrenamiento de equipos.<br>• <strong>Formalización Empresarial:</strong> Constitución societaria y cumplimiento normativo.<br>• <strong>Optimización Operativa:</strong> Reducción de costos y mejora de rentabilidad.<br><br>¿Buscas potenciar tus ventas o estructurar tu Pyme?"`,
+                actions: [
+                    { label: "💼 Ver Ficha Consultoría Pymes", action: "showInfo('Comercial')" },
+                    { label: "📲 Hablar con Christian Ortega", url: "https://wa.me/593996408009?text=Hola%20EvoluSer,%20convers%C3%A9%20con%20Ser%20y%20deseo%20asesor%C3%ADa%20en%20Consultor%C3%ADa%20Comercial%20y%20Estrategia" }
+                ]
+            },
+            marketing: {
+                text: `"¡Eleva la autoridad de tu marca con calidad de cine! Nuestra división de <strong>Producción Audiovisual 4K</strong> (Dir. <strong>Nury Echeverría</strong>) tiene un paquete integral por solo <strong>$80 USD</strong>:<br><br>• <strong>Grabación In-Situ 4K ProRes</strong> con iluminación profesional.<br>• <strong>4 en 1:</strong> Guion institucional, grabación, edición dinámica y subtítulos animados.<br>• <strong>Publicación Multiplataforma:</strong> TikTok, Instagram y Facebook.<br>• 🎁 <strong>Bono Exclusivo:</strong> Diseño gráfico de 1 Post promocional adicional.<br><br>¿Agendamos tu día de rodaje?"`,
+                actions: [
+                    { label: "🎥 Ver Detalles del Pack 4K ($80)", action: "showInfo('Marketing')" },
+                    { label: "📲 Reservar Producción con Nury", url: "https://wa.me/593983900050?text=Hola%20EvoluSer,%20habl%C3%A9%20con%20Ser%20y%20quiero%20reservar%20el%20Paquete%20de%20Producci%C3%B3n%20Audiovisual%204K%20de%20%2480%20USD" }
+                ]
+            },
+            cotizar: {
+                text: `"En <strong>EvoluSer Comercial</strong> personalizamos cada cotización para darte la mejor cobertura y rentabilidad.<br><br><strong>¿Qué tipo de solución deseas cotizar hoy?</strong>"`,
+                actions: [
+                    { label: "🚗 Cotizar Seguro Vehicular / Salud / Vida", url: "https://wa.me/593984104342?text=Hola%20EvoluSer,%20habl%C3%A9%20con%20Ser%20y%20deseo%20una%20cotizaci%C3%B3n%20de%20Seguros%20(Veh%C3%ADculos%20/%20Salud%20/%20Corporativo)" },
+                    { label: "💼 Cotizar Estrategia / Conectividad Pyme", url: "https://wa.me/593996408009?text=Hola%20EvoluSer,%20habl%C3%A9%20con%20Ser%20y%20deseo%20cotizar%20Consultor%C3%ADa%20Comercial%20o%20Conectividad%20Corporativa" },
+                    { label: "🎥 Contratar Pack Video 4K ($80 USD)", url: "https://wa.me/593983900050?text=Hola%20EvoluSer,%20habl%C3%A9%20con%20Ser%20y%20deseo%20contratar%20el%20Pack%20Audiovisual%204K%20de%20%2480%20USD" }
+                ]
+            },
+            faq: {
+                text: `"Aquí tienes las respuestas a las <strong>Preguntas Frecuentes (FAQ)</strong> de nuestros clientes:<br><br>1️⃣ <strong>¿Trabajan con las principales aseguradoras del país?</strong> Sí, comparamos y estructuramos pólizas con las aseguradoras y empresas de medicina prepagada más sólidas del Ecuador.<br>2️⃣ <strong>¿Qué incluye el paquete de Video 4K de $80 USD?</strong> Incluye guion, grabación 4K profesional, edición con subtítulos, estrategia de publicación en redes y 1 post gráfico de regalo.<br>3️⃣ <strong>¿Nos acompañan durante un siniestro o reclamo?</strong> ¡Al 100%! Nuestro equipo lidera la gestión de tus siniestros de principio a fin.<br>4️⃣ <strong>¿El diagnóstico inicial tiene costo?</strong> Es totalmente gratuito."`,
+                actions: [
+                    { label: "💰 Solicitar Cotización Ahora", intent: "cotizar" },
+                    { label: "📅 Agendar con un Director", intent: "agendar" }
+                ]
+            },
+            agendar: {
+                text: `"Nuestros Socios Directores están listos para atenderte de forma personalizada:<br><br>• <strong>Seguros & Comercial (Dolores Ortega):</strong> +593 98 410 4342<br>• <strong>Estrategia & Operaciones (Christian Ortega):</strong> +593 99 640 8009<br>• <strong>Producción Audiovisual 4K (Nury Echeverría):</strong> +593 98 390 0050<br><br>Elige con quién deseas conversar ahora mismo:"`,
+                actions: [
+                    { label: "📲 Hablar con Dolores (Seguros)", url: "https://wa.me/593984104342?text=Hola%20Dolores,%20vengo%20del%20asistente%20Ser%20y%20deseo%20agendar%20una%20asesor%C3%ADa%20de%20Seguros" },
+                    { label: "📲 Hablar con Christian (Estrategia)", url: "https://wa.me/593996408009?text=Hola%20Christian,%20vengo%20del%20asistente%20Ser%20y%20deseo%20agendar%20una%20asesor%C3%ADa%20Estrat%C3%A9gica" },
+                    { label: "📲 Hablar con Nury (Marketing 4K)", url: "https://wa.me/593983900050?text=Hola%20Nury,%20vengo%20del%20asistente%20Ser%20y%20deseo%20agendar%20una%20producci%C3%B3n%204K" }
+                ]
+            }
+        };
+
+        function escapeSerHTML(str) {
+            return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        function detectSerIntent(rawText) {
+            const text = rawText.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            const safeRaw = escapeSerHTML(rawText);
+
+            const matched = [];
+            if (/(auto|vehiculo|carro|camion|flota|choque|grua|soat|automotriz)/.test(text)) matched.push("vehiculos");
+            if (/(salud|vida|medicina|prepagada|hospital|medico|clinica|maternidad|dental|familia)/.test(text)) matched.push("salud");
+            if (/(seguro|poliza|multiriesgo|incendio|robo|responsabilidad civil|lucro cesante|siniestro|patrimonio|dolores)/.test(text) && !matched.includes("vehiculos") && !matched.includes("salud")) matched.push("seguros");
+            if (/(internet|fibra|wifi|conectividad|enlace|movil|celular|datos|telefonia)/.test(text)) matched.push("internet");
+            if (/(comercial|venta|pyme|negocio|empresa|estrategia|constituir|formaliza|christian|rentabilidad)/.test(text)) matched.push("comercial");
+            if (/(video|4k|marketing|audiovisual|redes|tiktok|instagram|grabacion|rodaje|80|nury|publicidad)/.test(text)) matched.push("marketing");
+
+            if (matched.length > 1) {
+                const names = {
+                    vehiculos: "<strong>Seguros de Vehículos y Flotas</strong>",
+                    salud: "<strong>Medicina Prepagada y Seguros de Vida</strong>",
+                    seguros: "<strong>Seguros Corporativos y Multiriesgo</strong>",
+                    internet: "<strong>Conectividad y Fibra Corporativa</strong>",
+                    comercial: "<strong>Consultoría Comercial Pymes</strong>",
+                    marketing: "<strong>Producción Audiovisual 4K ($80 USD)</strong>"
+                };
+                const listStr = matched.map(k => "• " + names[k]).join("<br>");
+                const acts = matched.map(k => serKnowledgeBase[k].actions[0]);
+                acts.push({
+                    label: "📲 Cotizar Paquete Integrado en WhatsApp",
+                    url: `https://wa.me/593984104342?text=${encodeURIComponent('Hola EvoluSer, conversé con Ser sobre una solución combinada (' + rawText + ') y deseo asesoría.')}`
+                });
+                return {
+                    text: `"¡Excelente decisión! Veo que te interesan varias de nuestras soluciones en <strong>EvoluSer Comercial</strong>:<br><br>${listStr}<br><br>Podemos armar un paquete preferencial combinando estas áreas para ti o tu empresa:"`,
+                    actions: acts
+                };
+            }
+
+            if (matched.length === 1) return serKnowledgeBase[matched[0]];
+            if (/(pregunta|frecuente|faq|duda|aseguradora|garantia|como funciona)/.test(text)) return serKnowledgeBase.faq;
+            if (/(precio|costo|cuanto|cotiza|presupuesto|tarifa|paquete|valor|proforma)/.test(text)) return serKnowledgeBase.cotizar;
+            if (/(agenda|cita|reunion|contacto|telefono|whatsapp|correo|email|ubicacion|quito|ecuador|llamar|director|asesor)/.test(text)) return serKnowledgeBase.agendar;
+            if (/(hola|buenos dias|buenas tardes|buenas noches|saludos|hey|que tal|quien eres|ser)/.test(text)) {
+                return {
+                    text: `"¡Hola! Qué gusto saludarte. Soy <strong>Ser</strong>, tu consultor virtual en <strong>EvoluSer Comercial</strong>. Estoy listo para asesorarte en <strong>Seguros (Vehículos, Salud, Vida y Corporativos), Conectividad Empresarial, Estrategia Comercial</strong> y nuestro famoso <strong>Pack de Producción Audiovisual 4K por $80 USD</strong>.<br><br>¿Qué área te gustaría explorar hoy?"`,
+                    actions: [
+                        { label: "🛡️ Seguros (Auto, Salud, Empresas)", intent: "seguros" },
+                        { label: "🎥 Pack Video 4K ($80 USD)", intent: "marketing" },
+                        { label: "💼 Estrategia y Conectividad", intent: "comercial" },
+                        { label: "📅 Hablar con un Director", intent: "agendar" }
+                    ]
+                };
+            }
+
+            return {
+                text: `"Gracias por comentarme tu requerimiento sobre: <em>'${safeRaw}'</em>.<br><br>En <strong>EvoluSer Comercial</strong> te brindamos atención VIP personalizada con nuestros directores. ¿Deseas enviar esta consulta directo a WhatsApp o prefieres explorar nuestras líneas?"`,
+                actions: [
+                    { label: "📲 Enviar esta consulta por WhatsApp", url: `https://wa.me/593984104342?text=${encodeURIComponent('Hola EvoluSer, conversé con Ser sobre: "' + rawText + '" y deseo atención especializada.')}` },
+                    { label: "💰 Cotizar Solución", intent: "cotizar" },
+                    { label: "📅 Agendar con un Director", intent: "agendar" },
+                    { label: "🔄 Ver Menú Principal", intent: "welcome" }
+                ]
+            };
+        }
+
+        function renderSerMessage(responseObj) {
+            const chatBox = document.getElementById('chat-box');
+            let actionsHTML = '';
+            if (responseObj.actions && responseObj.actions.length > 0) {
+                actionsHTML = `<div class="mt-3 pt-3 border-t border-gray-100 flex flex-wrap gap-1.5">`;
+                responseObj.actions.forEach(act => {
+                    if (act.intent) {
+                        actionsHTML += `<button onclick="triggerQuickIntent('${act.intent}')" class="ev-chip">${act.label}</button>`;
+                    } else if (act.action) {
+                        actionsHTML += `<button onclick="${act.action}" class="ev-chip">${act.label}</button>`;
+                    } else if (act.url) {
+                        actionsHTML += `<a href="${act.url}" target="_blank" class="ev-chip !bg-brandTeal !text-white !border-brandTeal hover:!bg-brandDark" rel="noopener noreferrer">${act.label}</a>`;
+                    }
+                });
+                actionsHTML += `</div>`;
+            }
+
+            const li = document.createElement('li');
+            li.className = 'flex justify-start items-end gap-2 animate-pop-in';
+            li.innerHTML = `
+                <img src="${SER_AVATAR_URL}" alt="Ser" class="w-7 h-7 rounded-full object-contain bg-brandDark/10 p-0.5 flex-shrink-0 mb-1" loading="lazy" decoding="async">
+                <div class="bg-white text-gray-700 p-4 rounded-2xl rounded-bl-none shadow-sm text-xs md:text-sm border border-gray-100 max-w-[88%] leading-relaxed">
+                    <div>${responseObj.text}</div>
+                    ${actionsHTML}
+                </div>
+            `;
+            chatBox.appendChild(li);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function showSerTypingAndReply(responseObj) {
+            const chatBox = document.getElementById('chat-box');
+            const typingId = 'ser-typing-' + Date.now();
+            const typingLi = document.createElement('li');
+            typingLi.id = typingId;
+            typingLi.className = 'flex justify-start items-center gap-2';
+            typingLi.innerHTML = `
+                <img src="${SER_AVATAR_URL}" alt="Ser" class="w-7 h-7 rounded-full object-contain bg-brandDark/10 p-0.5" loading="lazy" decoding="async">
+                <div class="bg-white px-4 py-3 rounded-2xl rounded-bl-none shadow-sm border border-gray-100 flex items-center gap-1.5">
+                    <span class="typing-dot"></span>
+                    <span class="typing-dot"></span>
+                    <span class="typing-dot"></span>
+                    <span class="text-[10px] text-gray-400 font-bold ml-1">Ser está analizando...</span>
+                </div>
+            `;
+            chatBox.appendChild(typingLi);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            setTimeout(() => {
+                const el = document.getElementById(typingId);
+                if (el) el.remove();
+                renderSerMessage(responseObj);
+            }, 650);
+        }
+
+        function appendUserMessage(text) {
+            const chatBox = document.getElementById('chat-box');
+            const li = document.createElement('li');
+            li.className = 'flex justify-end animate-pop-in';
+            const safeText = escapeSerHTML(text);
+            li.innerHTML = `<div class="bg-gradient-to-r from-brandDark to-brandTeal text-white px-4 py-3 rounded-2xl rounded-br-none text-xs md:text-sm font-bold shadow-sm max-w-[82%]">${safeText}</div>`;
+            chatBox.appendChild(li);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function triggerQuickIntent(intentKey) {
+            const labels = {
+                welcome: "Ver menú principal de soluciones",
+                vehiculos: "Quiero información sobre Seguros de Vehículos y Flotas",
+                salud: "Me interesa Medicina Prepagada y Seguros de Vida",
+                seguros: "Deseo asesoría en Seguros Corporativos y Multiriesgo",
+                internet: "Quiero conocer planes de Internet Fibra y Telefonía Móvil",
+                comercial: "Busco Consultoría Comercial y Estrategia para Pymes",
+                marketing: "Me interesa el Pack de Producción Audiovisual 4K ($80 USD)",
+                cotizar: "Deseo solicitar una cotización personalizada",
+                faq: "Ver Preguntas Frecuentes (FAQ)",
+                agendar: "Quiero agendar una cita con un Director"
+            };
+            appendUserMessage(labels[intentKey] || intentKey);
+            const response = serKnowledgeBase[intentKey] || serKnowledgeBase.welcome;
+            showSerTypingAndReply(response);
+        }
+
+        function askSerFromPage(questionText) {
+            const win = document.getElementById('ai-chat-window');
+            if (win.classList.contains('hidden')) {
+                toggleChat();
+            }
+            setTimeout(() => {
+                appendUserMessage(questionText);
+                const reply = detectSerIntent(questionText);
+                showSerTypingAndReply(reply);
+            }, 250);
+        }
+
+        function resetSerChat() {
+            const chatBox = document.getElementById('chat-box');
+            chatBox.innerHTML = '';
+            renderSerMessage(serKnowledgeBase.welcome);
+        }
+
+        function toggleChat() {
+            const win = document.getElementById('ai-chat-window');
+            if (win.classList.contains('hidden')) {
+                win.classList.remove('hidden');
+                const chatBox = document.getElementById('chat-box');
+                if (chatBox.children.length === 0) {
+                    renderSerMessage(serKnowledgeBase.welcome);
+                }
+                setTimeout(() => {
+                    win.classList.remove('scale-0');
+                    document.getElementById('chat-input').focus();
+                }, 15);
+            } else {
+                win.classList.add('scale-0');
+                setTimeout(() => win.classList.add('hidden'), 300);
+            }
+        }
+
+        function handleChat() {
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if (!text) return;
+            appendUserMessage(text);
+            input.value = '';
+            const reply = detectSerIntent(text);
+            showSerTypingAndReply(reply);
+        }
+
+        function cotizarActual() { window.open('https://wa.me/593984104342', '_blank'); }
+        function openWhatsapp() { window.open('https://wa.me/593984104342', '_blank'); }
         if (typeof VanillaTilt !== 'undefined') { VanillaTilt.init(document.querySelectorAll(".glass-card"), { max: 5, speed: 400 }); }
     </script>
 </body>
